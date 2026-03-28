@@ -158,8 +158,6 @@ const dict: Record<Lang, Record<string, string>> = {
     each_pays: "Each pays",
     per_person: "Per person",
     promotions: "Promotions",
-    all_methods: "All Methods",
-    all_modes: "All Modes",
   },
   zh: {
     tables: "桌位",
