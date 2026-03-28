@@ -17,6 +17,7 @@ import AdminKDS from "./pages/admin/AdminKDS";
 import AdminSales from "./pages/admin/AdminSales";
 import AdminFinance from "./pages/admin/AdminFinance";
 import AdminSettings from "./pages/admin/AdminSettings";
+import AdminPromotions from "./pages/admin/AdminPromotions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
                 <Route path="sales" element={<AdminSales />} />
                 <Route path="finance" element={<AdminFinance />} />
                 <Route path="settings" element={<AdminSettings />} />
+                <Route path="promotions" element={<AdminPromotions />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
