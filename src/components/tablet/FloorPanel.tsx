@@ -85,7 +85,7 @@ export const FloorPanel: React.FC<FloorPanelProps> = ({
   return (
     <div className={cn(
       "bg-card border-r border-border flex flex-col shrink-0 transition-all duration-300",
-      isFullscreen ? "absolute inset-0 z-40 border-r-0" : "w-64"
+      isFullscreen ? "absolute inset-0 z-40 border-r-0" : "w-72"
     )}>
       {/* Header with logo */}
       <div className="px-3 py-2.5 border-b border-border flex items-center gap-2">

@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { NavLink } from "@/components/NavLink";
 import {
   LayoutDashboard, UtensilsCrossed, Users, Shield, Monitor, BarChart3,
-  DollarSign, Settings, LogOut, Bell
+  DollarSign, Settings, LogOut, Bell, Tag
 } from "lucide-react";
 import uniwebLogo from "@/assets/uniweb-logo.jpg";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -11,6 +11,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 const navItems = [
   { title: "Dashboard", url: "/admin", icon: LayoutDashboard },
   { title: "Menu", url: "/admin/menu", icon: UtensilsCrossed },
+  { title: "Promotions", url: "/admin/promotions", icon: Tag },
   { title: "Staff", url: "/admin/staff", icon: Shield },
   { title: "CRM", url: "/admin/crm", icon: Users },
   { title: "KDS Monitor", url: "/admin/kds", icon: Monitor },

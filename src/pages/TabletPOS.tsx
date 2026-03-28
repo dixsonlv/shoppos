@@ -311,7 +311,7 @@ const TabletPOS: React.FC = () => {
               onPay={() => setShowPayment(true)}
             />
           ) : (
-            <div className="w-80 shrink-0 border-l border-border">
+            <div className="w-[340px] shrink-0 border-l border-border">
               <OrderHistory orders={paidOrders} onClose={() => setShowHistory(false)} />
             </div>
           )}
