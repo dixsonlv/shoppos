@@ -143,6 +143,10 @@ const dict: Record<Lang, Record<string, string>> = {
     order_history: "Order History",
     order_detail: "Order Detail",
     no_history: "No completed orders yet",
+    cash_payment: "Cash Payment",
+    net_paid: "Net Paid",
+    all_methods: "All Methods",
+    all_modes: "All Modes",
   },
   zh: {
     tables: "桌位",
