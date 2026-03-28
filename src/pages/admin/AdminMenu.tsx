@@ -165,6 +165,7 @@ const AdminMenu: React.FC = () => {
             onDelete={removeCurrent}
             isCreating={isCreating}
             activeTab={activeTab}
+            categoryOptions={displayCategories}
           />
         </TabsContent>
 
@@ -179,6 +180,7 @@ const AdminMenu: React.FC = () => {
             onDelete={removeCurrent}
             isCreating={isCreating}
             activeTab={activeTab}
+            categoryOptions={displayCategories}
           />
         </TabsContent>
       </Tabs>
@@ -196,6 +198,7 @@ interface MenuEditorLayoutProps {
   onDelete: () => void;
   isCreating: boolean;
   activeTab: string;
+  categoryOptions: string[];
 }
 
 const MenuEditorLayout: React.FC<MenuEditorLayoutProps> = ({
@@ -208,6 +211,7 @@ const MenuEditorLayout: React.FC<MenuEditorLayoutProps> = ({
   onDelete,
   isCreating,
   activeTab,
+  categoryOptions,
 }) => {
   return (
     <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_420px]">
@@ -299,7 +303,7 @@ const MenuEditorLayout: React.FC<MenuEditorLayoutProps> = ({
               </Field>
               <Field label="Category">
                 <select value={editorDraft.category} onChange={(e) => setEditorDraft((prev) => ({ ...prev, category: e.target.value }))} className="h-10 w-full rounded-xl border border-border bg-background px-3 text-[13px] text-foreground outline-none focus:border-primary">
-                  {(editorDraft.isCombo ? ["Combos"] : displayCategories).map((category) => (
+                  {(editorDraft.isCombo ? ["Combos"] : categoryOptions).map((category) => (
                     <option key={category} value={category}>{category}</option>
                   ))}
                 </select>

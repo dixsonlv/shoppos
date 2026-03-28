@@ -324,7 +324,7 @@ const AdminPromotions: React.FC = () => {
       {/* Table */}
       <div className="overflow-hidden rounded-xl border border-border bg-card">
         <div className="overflow-x-auto">
-        <table className="w-full min-w-[760px]">
+          <table className="w-full min-w-[760px]">
           <thead>
             <tr className="border-b border-border bg-accent/30">
               <th className="text-left text-[11px] font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Promotion</th>
@@ -378,11 +378,11 @@ const AdminPromotions: React.FC = () => {
               );
             })}
           </tbody>
-        </table>
-        {filtered.length === 0 && (
-          <div className="text-center py-12 text-muted-foreground text-[13px]">No promotions found</div>
-        )}
+          </table>
         </div>
+        {filtered.length === 0 && (
+          <div className="py-12 text-center text-[13px] text-muted-foreground">No promotions found</div>
+        )}
       </div>
     </div>
   );
