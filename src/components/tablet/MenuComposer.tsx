@@ -119,7 +119,7 @@ export const MenuComposer: React.FC<MenuComposerProps> = ({ onAddItem, selectedT
 
       {/* Menu Grid */}
       <div className="flex-1 overflow-y-auto pos-scrollbar p-5">
-        <div className="grid grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
           {filteredItems.map(item => {
             const comboDisplay = getComboDisplay(item);
             return (

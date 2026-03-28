@@ -17,7 +17,7 @@ export const CheckPanel: React.FC<CheckPanelProps> = ({ order, table, onUpdateQu
 
   if (!order) {
     return (
-      <div className="w-80 bg-card border-l border-border flex flex-col items-center justify-center shrink-0">
+      <div className="w-[340px] bg-card border-l border-border flex flex-col items-center justify-center shrink-0">
         <UtensilsCrossed className="h-10 w-10 text-muted-foreground/20 mb-3" />
         <p className="text-[13px] text-muted-foreground">{t("select_table_start")}</p>
       </div>
@@ -25,7 +25,7 @@ export const CheckPanel: React.FC<CheckPanelProps> = ({ order, table, onUpdateQu
   }
 
   return (
-    <div className="w-80 bg-card border-l border-border flex flex-col shrink-0">
+    <div className="w-[340px] bg-card border-l border-border flex flex-col shrink-0">
       {/* Header */}
       <div className="p-4 border-b border-border">
         <div className="flex items-center justify-between">
