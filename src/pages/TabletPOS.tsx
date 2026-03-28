@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Receipt } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { FloorPanel } from "@/components/tablet/FloorPanel";
 import { MenuComposer } from "@/components/tablet/MenuComposer";
 import { CheckPanel } from "@/components/tablet/CheckPanel";
@@ -277,9 +278,5 @@ const TabletPOS: React.FC = () => {
     </div>
   );
 };
-
-function cn(...classes: (string | boolean | undefined)[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default TabletPOS;
