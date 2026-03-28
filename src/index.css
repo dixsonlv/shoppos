@@ -141,6 +141,16 @@
     font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
     font-size: 14px;
     letter-spacing: -0.006em;
+    -webkit-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    touch-action: manipulation;
+  }
+
+  /* Disable zoom on tablet */
+  html {
+    touch-action: manipulation;
+    -ms-touch-action: manipulation;
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { Receipt } from "lucide-react";
 import { FloorPanel } from "@/components/tablet/FloorPanel";
 import { MenuComposer } from "@/components/tablet/MenuComposer";
@@ -9,6 +9,56 @@ import { tables as mockTables, sampleOrders, menuItems, type Table, type Order, 
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useLanguage } from "@/hooks/useLanguage";
 
+// Generate 30 mock historical orders for demo
+const generateMockHistory = (): PaidOrder[] => {
+  const methods = ["Visa", "Mastercard", "UnionPay", "Alipay", "WeChat Pay", "PayNow", "Cash"];
+  const modes: ("dine-in" | "takeaway" | "delivery")[] = ["dine-in", "takeaway", "delivery"];
+  const itemNames = ["Chicken Rice", "Laksa", "Char Kway Teow", "Nasi Lemak", "Satay", "Teh Tarik", "Hokkien Mee", "Bak Kut Teh", "Chilli Crab", "Milo Dinosaur"];
+  const result: PaidOrder[] = [];
+  const now = Date.now();
+
+  for (let i = 0; i < 30; i++) {
+    const mode = modes[i % modes.length];
+    const method = methods[i % methods.length];
+    const itemCount = 1 + Math.floor(Math.random() * 4);
+    const items: PaidOrder["items"] = [];
+    for (let j = 0; j < itemCount; j++) {
+      const price = 3 + Math.random() * 35;
+      items.push({
+        name: itemNames[(i + j) % itemNames.length],
+        quantity: 1 + Math.floor(Math.random() * 2),
+        price: Math.round(price * 100) / 100,
+        modifiers: j === 0 ? [{ name: "Spicy", price: 0 }] : [],
+      });
+    }
+    const subtotal = items.reduce((s, it) => s + (it.price + it.modifiers.reduce((ms, m) => ms + m.price, 0)) * it.quantity, 0);
+    const serviceCharge = subtotal * 0.1;
+    const gst = (subtotal + serviceCharge) * 0.09;
+    const total = subtotal + serviceCharge + gst;
+
+    const isCash = method === "Cash";
+    const cashReceived = isCash ? Math.ceil(total / 10) * 10 : undefined;
+    const changeDue = isCash && cashReceived ? cashReceived - total : undefined;
+
+    result.push({
+      id: `hist-${i}-${Date.now()}`,
+      tableNumber: mode === "dine-in" ? String(1 + (i % 15)) : undefined,
+      serviceMode: mode,
+      items,
+      subtotal: Math.round(subtotal * 100) / 100,
+      discount: i % 7 === 0 ? Math.round(subtotal * 0.1 * 100) / 100 : 0,
+      serviceCharge: Math.round(serviceCharge * 100) / 100,
+      gst: Math.round(gst * 100) / 100,
+      total: Math.round(total * 100) / 100,
+      paidAt: new Date(now - i * 3600000 * (0.5 + Math.random())).toISOString(),
+      paymentMethod: method,
+      cashReceived: cashReceived ? Math.round(cashReceived * 100) / 100 : undefined,
+      changeDue: changeDue ? Math.round(changeDue * 100) / 100 : undefined,
+    });
+  }
+  return result;
+};
+
 const TabletPOS: React.FC = () => {
   const { t } = useLanguage();
   const [tables, setTables] = useState(mockTables);
@@ -17,8 +67,9 @@ const TabletPOS: React.FC = () => {
   const [currentOrder, setCurrentOrder] = useState<Order | null>(null);
   const [showPayment, setShowPayment] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
-  const [paidOrders, setPaidOrders] = useState<PaidOrder[]>([]);
+  const [paidOrders, setPaidOrders] = useState<PaidOrder[]>(() => generateMockHistory());
   const [floorFullscreen, setFloorFullscreen] = useState(false);
+  const [tableManagement, setTableManagement] = useState(true); // QSR toggle
 
   const selectedTable = tables.find(t => t.id === selectedTableId);
 
@@ -136,6 +187,10 @@ const TabletPOS: React.FC = () => {
 
   const handlePaymentComplete = useCallback((method?: string) => {
     if (currentOrder) {
+      const isCash = method === "Cash";
+      const cashReceived = isCash ? Math.ceil(currentOrder.total / 10) * 10 : undefined;
+      const changeDue = isCash && cashReceived ? cashReceived - currentOrder.total : undefined;
+
       const paid: PaidOrder = {
         id: currentOrder.id,
         tableNumber: currentOrder.tableNumber,
@@ -151,6 +206,8 @@ const TabletPOS: React.FC = () => {
         total: currentOrder.total,
         paidAt: new Date().toISOString(),
         paymentMethod: method || paymentMethods[Math.floor(Math.random() * paymentMethods.length)],
+        cashReceived,
+        changeDue,
       };
       setPaidOrders(prev => [paid, ...prev]);
     }
@@ -218,19 +275,26 @@ const TabletPOS: React.FC = () => {
     });
   }, []);
 
+  // When history is shown, replace CheckPanel with OrderHistory side panel
+  const showCheckPanel = !showHistory;
+
   return (
     <div className="flex h-screen bg-background overflow-hidden relative">
-      <FloorPanel
-        tables={tables}
-        selectedTableId={selectedTableId}
-        onSelectTable={handleSelectTable}
-        onCreateWalkIn={handleCreateWalkIn}
-        onTransferTable={handleTransferTable}
-        onMergeTables={handleMergeTables}
-        onSplitTable={handleSplitTable}
-        isFullscreen={floorFullscreen}
-        onToggleFullscreen={() => setFloorFullscreen(f => !f)}
-      />
+      {/* Floor Panel — only when table management is enabled */}
+      {tableManagement && (
+        <FloorPanel
+          tables={tables}
+          selectedTableId={selectedTableId}
+          onSelectTable={handleSelectTable}
+          onCreateWalkIn={handleCreateWalkIn}
+          onTransferTable={handleTransferTable}
+          onMergeTables={handleMergeTables}
+          onSplitTable={handleSplitTable}
+          isFullscreen={floorFullscreen}
+          onToggleFullscreen={() => setFloorFullscreen(f => !f)}
+        />
+      )}
+
       {!floorFullscreen && (
         <>
           <MenuComposer
@@ -238,26 +302,40 @@ const TabletPOS: React.FC = () => {
             selectedTable={selectedTable}
             currentOrder={currentOrder}
           />
-          <CheckPanel
-            order={currentOrder}
-            table={selectedTable}
-            onUpdateQuantity={handleUpdateQuantity}
-            onRemoveItem={handleRemoveItem}
-            onPay={() => setShowPayment(true)}
-          />
+          {showCheckPanel ? (
+            <CheckPanel
+              order={currentOrder}
+              table={selectedTable}
+              onUpdateQuantity={handleUpdateQuantity}
+              onRemoveItem={handleRemoveItem}
+              onPay={() => setShowPayment(true)}
+            />
+          ) : (
+            <div className="w-80 shrink-0 border-l border-border">
+              <OrderHistory orders={paidOrders} onClose={() => setShowHistory(false)} />
+            </div>
+          )}
         </>
       )}
 
       {/* Top-right controls */}
       <div className="absolute top-3 right-3 z-10 flex items-center gap-2">
         <button
-          onClick={() => setShowHistory(true)}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-card border-1.5 border-border text-[11px] font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+          onClick={() => setShowHistory(h => !h)}
+          className={cn(
+            "flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border-1.5 text-[11px] font-medium transition-colors min-h-[44px]",
+            showHistory
+              ? "bg-primary text-primary-foreground border-primary"
+              : "bg-card border-border text-muted-foreground hover:bg-accent hover:text-foreground"
+          )}
         >
           <Receipt className="h-3.5 w-3.5" />
           {t("history")}
           {paidOrders.length > 0 && (
-            <span className="bg-primary text-primary-foreground text-[9px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">
+            <span className={cn(
+              "text-[9px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center",
+              showHistory ? "bg-primary-foreground text-primary" : "bg-primary text-primary-foreground"
+            )}>
               {paidOrders.length}
             </span>
           )}
@@ -272,12 +350,13 @@ const TabletPOS: React.FC = () => {
           onComplete={handlePaymentComplete}
         />
       )}
-
-      {showHistory && (
-        <OrderHistory orders={paidOrders} onClose={() => setShowHistory(false)} />
-      )}
     </div>
   );
 };
+
+// Helper
+function cn(...classes: (string | boolean | undefined)[]) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export default TabletPOS;
