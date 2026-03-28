@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Search, Star, Plus, Package, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { menuItems, categories, modifierGroups, type Table, type Order, type MenuItem } from "@/data/mock-data";
+import { categories, modifierGroups, type Table, type Order, type MenuItem } from "@/data/mock-data";
 import { ModifierDialog } from "@/components/tablet/ModifierDialog";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useMenuItems } from "@/state/menu-store";
 
 interface MenuComposerProps {
   onAddItem: (menuItemId: string, modifiers: { name: string; price: number }[], notes?: string, comboItems?: { name: string; groupName: string }[]) => void;
@@ -13,6 +14,7 @@ interface MenuComposerProps {
 
 export const MenuComposer: React.FC<MenuComposerProps> = ({ onAddItem, selectedTable, currentOrder }) => {
   const { t, lang } = useLanguage();
+  const menuItems = useMenuItems();
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [modifierItem, setModifierItem] = useState<MenuItem | null>(null);

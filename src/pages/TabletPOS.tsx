@@ -4,10 +4,12 @@ import { FloorPanel } from "@/components/tablet/FloorPanel";
 import { MenuComposer } from "@/components/tablet/MenuComposer";
 import { CheckPanel } from "@/components/tablet/CheckPanel";
 import { PaymentSheet } from "@/components/tablet/PaymentSheet";
-import { OrderHistory, type PaidOrder } from "@/components/tablet/OrderHistory";
+import { OrderHistory } from "@/components/tablet/OrderHistory";
+import type { PaidOrder } from "@/components/tablet/history/types";
 import { tables as mockTables, sampleOrders, menuItems, type Table, type Order, type OrderItem, type ServiceMode } from "@/data/mock-data";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useLanguage } from "@/hooks/useLanguage";
+import { getMenuItemsSnapshot } from "@/state/menu-store";
 
 // Generate 30 mock historical orders for demo
 const generateMockHistory = (): PaidOrder[] => {
@@ -129,7 +131,7 @@ const TabletPOS: React.FC = () => {
 
   const handleAddItem = useCallback((menuItemId: string, modifiers: { name: string; price: number }[], notes?: string, comboItems?: { name: string; groupName: string }[]) => {
     if (!currentOrder) return;
-    const menuItem = menuItems.find(m => m.id === menuItemId);
+    const menuItem = getMenuItemsSnapshot().find(m => m.id === menuItemId);
     if (!menuItem) return;
 
     setCurrentOrder(prev => {
