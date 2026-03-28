@@ -273,6 +273,10 @@ const dict: Record<Lang, Record<string, string>> = {
     order_history: "交易历史",
     order_detail: "交易详情",
     no_history: "暂无已完成订单",
+    cash_payment: "现金支付",
+    net_paid: "实收金额",
+    all_methods: "全部方式",
+    all_modes: "全部模式",
   },
 };
 
