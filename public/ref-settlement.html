@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settlement Report — Song Fa Bak Kut Teh · January 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --brand:        #1e3a8a;
+  --brand-dark:   #162d6e;
+  --brand-light:  #eff6ff;
+  --brand-border: #bfdbfe;
+  --ink:          #111827;
+  --ink2:         #374151;
+  --ink3:         #6b7280;
+  --ink4:         #9ca3af;
+  --border:       #e5e7eb;
+  --border2:      #d1d5db;
+  --bg:           #f5f4f2;
+  --surface:      #ffffff;
+  --alt:          #f9fafb;
+  --green:        #166534;
+  --green-bg:     #dcfce7;
+  --red:          #991b1b;
+  --red-bg:       #fee2e2;
+  --amber:        #92400e;
+  --amber-bg:     #fef3c7;
+
+  /* Layout */
+  --min-w:        1080px;  /* enforced minimum width — wide enough for all tables */
+  --bar-h:        56px;
+  --doc-max:      1200px;
+  --doc-pad:      40px;
+}
+
+html {
+  font-size: 13px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  /* prevent layout collapse below min-width */
+  min-width: var(--min-w);
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  min-width: var(--min-w);
+}
+
+/* ══════════════════════════════════════════════════════
+   SCREEN TOOLBAR
+══════════════════════════════════════════════════════ */
+.screen-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: var(--bar-h);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  padding: 0 32px; gap: 16px;
+  min-width: var(--min-w);
+}
+.sb-brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.sb-brand img { width: 28px; height: 28px; border-radius: 7px; display: block; }
+.sb-brand-name { font-size: 13px; font-weight: 700; color: var(--ink); letter-spacing: -.02em; white-space: nowrap; }
+.sb-brand-sub  { font-size: 10px; color: var(--ink4); text-transform: uppercase; letter-spacing: .05em; font-weight: 500; }
+.sb-sep  { flex: 1; }
+.sb-meta { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.sb-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--alt); border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 10px;
+  font-size: 11px; color: var(--ink3); white-space: nowrap;
+}
+.sb-pill svg { flex-shrink: 0; }
+.sb-ref { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink4); white-space: nowrap; }
+.btn-pdf {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--brand); color: #fff;
+  border: none; border-radius: 8px;
+  padding: 8px 18px; font-size: 13px; font-weight: 600;
+  font-family: 'DM Sans', sans-serif; cursor: pointer;
+  transition: background .15s; white-space: nowrap; flex-shrink: 0;
+}
+.btn-pdf:hover { background: var(--brand-dark); }
+.btn-pdf svg { flex-shrink: 0; }
+
+/* ══════════════════════════════════════════════════════
+   PAGE WRAPPER — responsive with min-width
+══════════════════════════════════════════════════════ */
+.page-wrap {
+  width: 100%;
+  min-width: var(--min-w);
+  max-width: var(--doc-max);
+  margin: calc(var(--bar-h) + 20px) auto 60px;
+  padding: 0 20px;
+}
+
+/* ══════════════════════════════════════════════════════
+   REPORT CARD
+══════════════════════════════════════════════════════ */
+.report {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0,0,0,.06);
+  width: 100%;
+}
+
+/* ══════════════════════════════════════════════════════
+   REPORT HEADER BANNER
+══════════════════════════════════════════════════════ */
+.rpt-header {
+  background: var(--brand);
+  padding: 26px var(--doc-pad);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+}
+.rh-left { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.rh-logo { width: 44px; height: 44px; border-radius: 10px; display: block; flex-shrink: 0; }
+.rh-name { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -.02em; white-space: nowrap; }
+.rh-sub  { font-size: 10px; color: #93c5fd; text-transform: uppercase; letter-spacing: .08em; font-weight: 500; margin-top: 2px; white-space: nowrap; }
+.rh-right { text-align: right; flex-shrink: 0; }
+.rh-label  { font-size: 10px; color: #93c5fd; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; }
+.rh-period { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -.03em; margin-top: 2px; }
+.rh-ref    { font-size: 10px; color: #93c5fd; font-family: 'DM Mono', monospace; margin-top: 4px; }
+
+/* ══════════════════════════════════════════════════════
+   MERCHANT INFO STRIP
+══════════════════════════════════════════════════════ */
+.merchant-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--border);
+  background: var(--alt);
+}
+.ms-cell {
+  padding: 16px 20px;
+  border-right: 1px solid var(--border);
+}
+.ms-cell:last-child { border-right: none; }
+.ms-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink4); margin-bottom: 5px; }
+.ms-value { font-size: 13px; font-weight: 600; color: var(--ink); }
+.ms-sub   { font-size: 11px; color: var(--ink3); margin-top: 2px; font-family: 'DM Mono', monospace; }
+
+/* ══════════════════════════════════════════════════════
+   BODY PADDING
+══════════════════════════════════════════════════════ */
+.rpt-body { padding: 36px var(--doc-pad); }
+
+/* ══════════════════════════════════════════════════════
+   SECTION
+══════════════════════════════════════════════════════ */
+.section { margin-bottom: 40px; }
+.section:last-child { margin-bottom: 0; }
+
+.sec-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-bottom: 10px; margin-bottom: 18px;
+  border-bottom: 2px solid var(--brand);
+}
+.sec-title { font-size: 14px; font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
+.sec-sub   { font-size: 11px; color: var(--ink4); }
+
+/* ══════════════════════════════════════════════════════
+   KPI GRID
+══════════════════════════════════════════════════════ */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.kpi {
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 16px 18px; background: var(--surface);
+  position: relative; overflow: hidden;
+}
+.kpi-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.kpi-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink4); margin-top: 6px; margin-bottom: 8px; }
+.kpi-val   { font-size: 19px; font-weight: 700; color: var(--ink); letter-spacing: -.04em; line-height: 1.15; }
+.kpi-sub   { font-size: 11px; color: var(--ink3); margin-top: 6px; }
+
+/* ══════════════════════════════════════════════════════
+   TABLES — universal
+══════════════════════════════════════════════════════ */
+.tbl-wrap { width: 100%; overflow-x: auto; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 12px;
+  /* prevent table from collapsing below its content */
+  table-layout: auto;
+}
+
+/* Column widths enforced via colgroup / inline width on th */
+thead th {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .07em;
+  color: var(--ink4); padding: 9px 12px;
+  text-align: left; background: var(--alt);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+thead th.r { text-align: right; }
+thead th.c { text-align: center; }
+
+tbody td {
+  padding: 8px 12px; color: var(--ink);
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+  /* Never break a cell mid-word in narrow cols */
+  word-break: break-word;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) td { background: #fafafa; }
+tbody tr:hover td { background: #f0f4ff; }
+
+/* Alignment helpers */
+td.r    { text-align: right; }
+td.c    { text-align: center; }
+td.mono { font-family: 'DM Mono', monospace; font-size: 11px; }
+td.mono.r { text-align: right; font-family: 'DM Mono', monospace; font-size: 11px; }
+td.dim  { color: var(--ink3); font-size: 11px; }
+td.nowrap { white-space: nowrap; }
+
+/* Colour helpers */
+td.green { color: var(--green); font-weight: 600; text-align: right; }
+td.red   { color: var(--red); text-align: right; }
+td.brand { color: var(--brand); font-weight: 600; }
+
+/* Indent sub-row */
+td.indent { padding-left: 26px; }
+
+/* Section header row (blue banner inside table) */
+tr.sec-row td {
+  background: var(--brand-light) !important;
+  color: var(--brand); font-weight: 700; font-size: 11px;
+  padding: 7px 12px;
+  border-top: 1px solid var(--brand-border);
+  border-bottom: 1px solid var(--brand-border);
+}
+
+/* Week / sub-total row */
+tr.week-row td {
+  background: #f0f4ff !important;
+  color: var(--brand); font-weight: 600; font-size: 11px;
+  border-top: 1px solid #c7d7f7;
+  border-bottom: 1px solid #c7d7f7;
+}
+
+/* Grand total row */
+tr.total-row td {
+  background: var(--brand-light) !important;
+  font-weight: 700; font-size: 12px;
+  border-top: 2px solid var(--brand);
+  border-bottom: 2px solid var(--brand);
+  color: var(--ink);
+}
+tr.total-row td.green { color: var(--green); }
+tr.total-row td.red   { color: var(--red); }
+
+/* Top outlet highlights */
+tr.top-1 td { background: #eff6ff !important; }
+tr.top-2 td { background: #f5f8ff !important; }
+tr.top-3 td { background: #f9fbff !important; }
+
+/* ══════════════════════════════════════════════════════
+   STATUS BADGES
+══════════════════════════════════════════════════════ */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: 4px;
+  font-size: 10px; font-weight: 700; white-space: nowrap;
+}
+.badge-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.b-ok   { background: var(--green-bg); color: var(--green); }
+.b-ok   .badge-dot { background: var(--green); }
+.b-warn { background: var(--amber-bg); color: var(--amber); }
+.b-warn .badge-dot { background: var(--amber); }
+.b-err  { background: var(--red-bg);   color: var(--red); }
+.b-err  .badge-dot { background: var(--red); }
+
+/* ══════════════════════════════════════════════════════
+   SCHEME DOT (coloured square before payment method name)
+══════════════════════════════════════════════════════ */
+.dot {
+  display: inline-block;
+  width: 9px; height: 9px; border-radius: 2px;
+  margin-right: 6px; vertical-align: middle; flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   PAYOUT CONFIRMATION BOX
+══════════════════════════════════════════════════════ */
+.payout-box {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 2px solid var(--brand); border-radius: 12px;
+  overflow: hidden;
+}
+.po-left  { background: var(--brand-light); padding: 28px 32px; border-right: 1px solid var(--brand-border); }
+.po-right { background: var(--alt); padding: 28px 32px; }
+.po-label  { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--brand); margin-bottom: 10px; }
+.po-amount { font-size: 30px; font-weight: 700; color: var(--ink); letter-spacing: -.05em; line-height: 1.1; }
+.po-ccy    { font-size: 13px; font-weight: 600; color: var(--ink3); margin-top: 6px; }
+.po-note   { font-size: 11px; color: var(--ink3); margin-top: 14px; line-height: 1.7; }
+.meta-row  {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-size: 12px; gap: 12px;
+}
+.meta-row:last-child { border-bottom: none; }
+.meta-key { color: var(--ink4); font-weight: 500; white-space: nowrap; }
+.meta-val { color: var(--ink); font-weight: 600; font-family: 'DM Mono', monospace; text-align: right; }
+
+/* ══════════════════════════════════════════════════════
+   DISCLAIMER
+══════════════════════════════════════════════════════ */
+.disclaimer {
+  background: var(--alt); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 18px;
+  font-size: 11px; color: var(--ink4); line-height: 1.7;
+  margin-top: 32px;
+}
+.disclaimer strong { color: var(--ink3); }
+
+/* ══════════════════════════════════════════════════════
+   SECTION DIVIDER
+   On screen: purely decorative dashed line, no layout disruption.
+   On print:  invisible — triggers a page break only.
+══════════════════════════════════════════════════════ */
+.sec-divider {
+  display: block;
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: 1px dashed var(--border2);
+  margin: 44px 0;
+  background: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   REPORT FOOTER
+══════════════════════════════════════════════════════ */
+.rpt-footer {
+  background: var(--alt); border-top: 1px solid var(--border);
+  padding: 14px var(--doc-pad);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.rf-l, .rf-r { font-size: 11px; color: var(--ink4); line-height: 1.6; }
+.rf-r { text-align: right; }
+.rf-mono { font-family: 'DM Mono', monospace; }
+
+/* ══════════════════════════════════════════════════════
+   NOTE INLINE (italic annotation inside tables)
+══════════════════════════════════════════════════════ */
+.note { font-size: 10px; color: var(--ink4); font-style: italic; }
+
+/* ══════════════════════════════════════════════════════
+   PRINT STYLES
+══════════════════════════════════════════════════════ */
+@media print {
+  html, body {
+    /* Do NOT set min-width in print — let the browser scale to paper */
+    font-size: 10.5px; background: #fff;
+  }
+  .screen-bar { display: none !important; }
+  .page-wrap  { margin: 0; padding: 0; max-width: 100%; min-width: 0; }
+  .report     { border: none; border-radius: 0; box-shadow: none; }
+
+  /* Section divider becomes a print page-break with no visible height */
+  .sec-divider {
+    border: none;
+    margin: 0;
+    height: 0;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* Force background colours for print */
+  .rpt-header, tr.sec-row td, tr.week-row td, tr.total-row td,
+  tr.top-1 td, tr.top-2 td, tr.top-3 td,
+  .po-left, .po-right, .kpi, .merchant-strip, .ms-cell {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  table   { page-break-inside: auto; }
+  tr      { page-break-inside: avoid; page-break-after: auto; }
+  .section { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     SCREEN TOOLBAR
+════════════════════════════════════════════ -->
+<header class="screen-bar">
+  <div class="sb-brand">
+    <img src="data:image/webp;base64,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" alt="Uniweb Pte. Ltd.">
+    <div>
+      <div class="sb-brand-name">Uniweb Pte. Ltd.</div>
+      <div class="sb-brand-sub">Merchant Portal</div>
+    </div>
+  </div>
+  <div class="sb-sep"></div>
+  <div class="sb-meta">
+    <span class="sb-pill">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1.5" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v2M8 1v2M1 5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      January 2026
+    </span>
+    <span class="sb-pill">Settlements</span>
+    <span class="sb-ref">UW-SR-2026-01-0042</span>
+    <button class="btn-pdf" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5V2h7v3M3.5 10.5H2a1 1 0 01-1-1v-4a1 1 0 011-1h10a1 1 0 011 1v4a1 1 0 01-1 1h-1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="3.5" y="7.5" width="7" height="5" rx="0.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      Save as PDF
+    </button>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════
+     REPORT DOCUMENT
+════════════════════════════════════════════ -->
+<div class="page-wrap">
+<div class="report">
+
+  <!-- Header Banner -->
+  <div class="rpt-header">
+    <div class="rh-left">
+      <img class="rh-logo" src="data:image/webp;base64,UklGRuQRAABXRUJQVlA4WAoAAAAIAAAA/wAA/wAAVlA4IEARAAAQTACdASoAAQABPnU6mEckpCKhKrV5mJAOiU3cLn4eDB+sM7b8TzmrI/mPpt5xSyv8F/p36xf//iR/y70Aedd6Kv/rvwHRReq3vf/AZ/1D8gO9b+s/0P9bfxR+TfwX5x80uco+9P277ZfZ7vJ/H/EC/Bf4V/S/x2/tvpp7CvQPMC9m/qP/C/q/9z9uiZNkAf5//2cRv/r6Fn+p/bnzcfT/sBfq5/sexJ6Q5nWR/Q/of0P6IACtNWmrTVpq01aastFfzl+/vBaVHZ0vo5hCtNWmrS7oFMH2Nin3d2v2g84fJ992KFZT+j1HL6Q+gmR9I6cv3owawI7pzFSV2xtyMf2Cr+MudZ85cJB+gT3DkuGg/kqDL2sMMuG8bIpB7bMmVf+6UDZ9Wnw6Zqv/4cJXTLl4ZuNrn6Q8QdS/737E4YdkmghXEPTsmGGvWApIuC/7L2rh/RwvZvHRVmQy/QnMC14OKkcIpHRHlGQuh9TRNI5j/s3Kl2uqRnmRWf/HEBb//zR1B+kKnK2DZd15MEnw2acXIdbrKBdmxy6sjsu0jtk2Tp8ugG+ZGDByY7DkGt893hXqbgCN5/BVoPaI/ktd5ZrXGWvWfl8U+gkR+a10VtW6s+Sf3LdNd4201siVu3s854mT5Bv/nGwy8tkG//H0GyclROYfNc3UjWetFBloOMwMx/oeeZu17re3/1N+e80rxXbJ3TLrup5VtxJP82azeKoVyLRaa/d3/+ssbvzz9OfWUTFUa/iZK4Hq971afDpmZ1D+NlGyjiffpeVToDfn/lN5X9PcPCBhAwgYJgQkOh/Q/of0P6H9D+h+AAD+/x9Ff/jeOu7ogV/3mGJsHqAA5Cg1fYAAM+3bsgC4Xpd222y87jES1iWhNH8pbWE5soPFF03Tr9Zqmtuu/GD9o+fTZUC9X0AfMpmFVxSapOfebPRb59c0rzKGCRfAk0ORmKJ5mBFLLSIfPVDsZIkiZrtdQOIYCOY/biJhFDDzm8xLHLAhTFF5hcg2JE2rdvQAYnaLi2Sr10+DGSD6AQqUMHfBZkrJZ+nQX+k6aACDGttRk3jusnuW1CjTOK10ju3yiCnIipswfib+t4zUgcmwk/tZ6S7bkSRFT9CKtDizeC6tPBDM+FWySJRkEHcOhN6h67KF3aPL31wtvCfkMpos/G/whaHbk8BCLTuoDbi+LLLaw28HB8j7JiXyT4GOpFN8WLyNpzQZ07fOuXXPjgInUMNX9MciCCYNTL+7p0UQp+nkOqWnJGNFWxd88KFpu6aiqCTF32FFodX7daRcU+2CxFMmuJhVJSFbRrISDlYN55yWUzI14sszlCDq1nD+8uR9Rcmt52tllQei5+xl6/7MXp9Kc2fuzJpMGRpP3EDNtq5A7R3Xdcvh+PF5tD6Gt5qS1FFV29v0W/RbG3nHiqEmjYdd/rrXOGwUYTr85nEt0SsNaO6M6t0ADYULNMkCXqzAXV4Dl5WrtcqBPNsLEWRrLMsEl12MPPJRSXoGVN7Y4SZPT/iZih9hrjiYG8/ZkQr8Z+rUzwQvAQz9i/sEeLiABzFPKtvPJyaEOSxDabBhnzUzfeQcXpj5zoBq7GDPgoVfHmcawLZ2jb54Ccbya31U2R2VKNLBLriQGxQ9TuIjprPNXNFjlQolvS7wlOtJfQwsuFju9+cCQuL0OG19sEI7TvkwKgb003NRMRYQ8iznRZ+Gy4WbRAfhYMpw+K/UvkGQG4Bs/c4b6O0CNtNHOCZ9QdBliiWmr3BWfMGzMAgORkQ34aIeCSLXtczqT9QrRHT+zgK6mTuH6We/bxZJIRhalGnmhmhlVSvkeYjaTCNVyirNFz9eXogI6b0KGwje3vlQUcElxqZiW4hhq4jZsRjnBN+CQaILO/us2XFMO/q6Nv7Xtfvz2QFhvG5BUgPctk1tM8gWbVmp+4a9B+JuRn4CmzZ3UfgYPiejFULjrUHy6lR07SdnRSTYFEirISZKzjViT349TX2e8G5Z/wzzHx6kO0CRBOwS7+RZpUVg4xIWpEeWVYdzfz1B+/gf80Ce9+vcta/FTGHNu7Isf9ngSXLZWO+TW/eIMrFudmBXQ1X7lR/yw0nA3LmebvoTmT2mRuEm2zB3r52GZau+Ue3h4MCYzHv4xd+6hG8wNr7lQFXg9CYidSVc4Hb+TeBxfGMOXMqc0WnroA7+XGCGAwMoZZ+oKhL3+lepVV0Knbx/xq2oxn0cdMI2qc0IxKVqk4CY0rd6ZLTtlHn37LCS08P6130VtVgSoaY37UJpi4Jg/i25e5GoWaGvoyxBa5qC3wABhC+FNCGfNnT0lRHLYYiPJqcMHXogFHg2eppeK8xW/sPSO6KpSghv5TSMnKV2fPmY6vFCJ6caSmXdkhPTYBifuZPbfDBvPu2SHgPV/BWh4UO5KXH56/A3ZmvlJgpT5sJb4P3xbkqJHCee6tFLr7sG8YxlsjE7ZlNVuPMDs8ua2cRDn7eA23ogg6W3LdCu0Cw9upfVSOsVA1u2d0VoA90eyPsqW+kBKhvXithtPWDT9EI37UpSDe5fEEBjzBy4GZd03il4gfKEPim/eLOf9CQF0aSgqL+aBHLpewnQ8ilayr6ZLYhdRt/0vLwwiGkTIfrP2J7HAGtHEIKnj15gBLOr2gVp3UFymxwjFNzP4G+ysH9kckIzxXP4Zz3XG0ssjq4vnAVeitbCXaijVCcXfW0bdwTXWvk1utM50KLTwZo1jDv5qexqHvEQG0G+DhoiKbMpOm5IUSIJ7urVTYB8/X3ATyPLA6grabt+WdIrRTEpTLiUOkzfvCBSa4++e46N37DOcgvrhwIrnTrNVmL2WnXDf0+A9ThTtkkNxyl7fCZJ3QntVvIpwyWZHTohpiFy1vlT4KA7jl9rloJpfeEE+bI7KB4H5dhSHTYFpFS8+hxeSDd5Wg+ewAV/3O+wQhAWnrjZKYmn0f4bi4iWWs/x0Xe2+jqTCclyyoM4lx5pWdIqVh/9nz/ExKQrOsBPkpnf3Eyr9j/Xsy1+c/au/m1pwmrMwXKH54DFoWj3Z18J5cQWsVGm882CzZDY7Pt3o6OV22uEdlFZx1LQCZXvo1m1P4+PDinky0PLHpY7NwIGe7+FMoO50OSTEr1aqClf6N2NMWq0WGlrkGz/76JJpB3FTdQt+wP0nGMfpEeEg1Smxv/vQDV2LgXR1HdD3ztrSBnHcDVTNoOqcmiB96WkF5DsrNsHRTE1UHZURO2PA+1EepbqUkf38HaAPAgFc/8be1kHrKvhoLjS9XXhmlFIoCIFdTIJLzqXLb9aRLfZiwQ9DJJLzfOzivZTlQlCQp+W77MU7CKssXr8YiMrkTsjuJASu3jadn24GtfHWZaSkK9Wjz3NpnobCstyN45JC0skn98281GLfP+3NdNcgf57lTnIWhXf7JincWtkcsP/NBxiAD4AfKqc0fk5RVF6n4exZjRpS3PSf/8MFbu0IjNEHt9+xWxDePn1jjP+Le0TgMVP324rsnnVqqhYX6IIDgZG9MX7A/MCA5VYYAw6GpZA6Jh7M9QvZnhkysxXRz3065lPojD4GaWrLZTS0zK11WJTbpVH8+iIAnGyykf9VFBWkdnoKgpWguCnV/cm773zp7WLK9fpbPYbYyOMqal7D1r2UKdMA5OU1+oAC3KDqt4/J6WP5XceIVAoaT/pQspIe9DzGYqHeYgRyROfSnQ0v2oYv5BYSHSSc68vo+qsBfjH/R2xGESELLhdy2A7qGf2O0zt2J8ZPx4b3d+paFZ6zm5FiZj29q8lfrsxxcqjGvGvJ/1IQk9//OB0A4nUU1WV3ZypuMIR+ZN42uPhvNn3Pl22TNm/p7hHtnzGzrZRdVpX4rxecQt9+1IN1e6b1v4RZbUAfmwJTPMZam9yvXenl6mRjDhGYJoIL5g/SLsXACwEaJcgdOMbulX3DIjMaM2JbZgVfSMpQvJktw1whk3MqqO9OgY8rixM2ho2A0ECY230V1nUd1C6FcYGFmJjJw+Uv/8HIimBUZVMVB6VzSz/CiiQSaNbq9TIxasbTXuYyVROycU7of+EGRBKeu3rjoZlKX/pa/QmuUqqJ0VDZb2+uTnuoYkePAHr8HpcIqOCTOJeu+00pgtcnY+2AIylHZz8+5rJUJvWwrEaZQVf440oXgb1l9hjKy6pgoASXVG/fE7oNCXbYtlhvqf8ocJo9SQUFYbd8PCgLZODSJ/dhz2jecjmBPfjp3h/FaRb9MV9+Y5vbKbsKGs5opp9HnnVRUjt129VfwMaGZfw/Ew/ohuKFDe4m9mYvC9rBRo2y5+ZWJAlYBC0A6WfbkVW4n7mWapTY3/3VmGfL6FyZeBwJ50ijXtghHYz14Fd3Lngd+qYlLtN9Y5+Ld19YftPaYiTFJ7EpCr1sS2X2PJaTQck1LOcU77M4qH7itB786zjiga3GvfZ7h8zcHT5SAnigyezEfmNktSgaZ6bSak+hJ9f0HjUL6fLiXsKCEe1W+wiYre7eTWiA193ZEqBHlr6mh8RSHvOEymbYZh39rbIbY3T2hjYxmb0lc+Unzj9Jnck7KWQywytCgnfHQAosPVSC4EXIZsgSuCpM+ljIw6kfdN6lSHIRLR2pCby0CdiPPXsyfE2/vs8DeVGlbh5aljuaU6wh4t7owXGiHhYyz/9WWR8pamsEAkMy0Y1i+75eV277ci6C9t4kg9Eca3G4sEUci2W9gRMfmFuvTcHnshgBikzQ8gYVjxzuizybmwblkjcKfHAapCt05G1PI1uU2txLh/fGiJ/AC895Az+4z5trAqPLOlOFIpplO9kHwA0aoWwiVoR8FXlzWyUxFha9RVL4nuvoOAs9L76wDSUtUeOdVfaEQKxXR+UjonNtKyTQCAYGrR7pJFbmnwosa77N30YkXiu4mIq6iOOM3fiuWp7zHXYA6vXmifHq0zjDrlwrWgQavb8q038aWpWS/UUern4dH0K5JaYT69Y7BuGjWmcgK4ipO3q7URkms/lX2vybYMM+eZMlUgRUkIfCkyaKGtfyyhBJLMKxeJZAahT0/zJjXq+nlfVD+hYaftIUemG56qWlN9VSUPA7+IQH/5cQ5zU6gKlAgQ4ywxzGtFtKJfy5VbQEo6EfAGYSB5dcfJKYmnWhPejp/ND9uXmyawsPVcUmk7huHnVmfO2XJtpbjIMOGxiEESqfnYuTBuu30XxigA0obZJqgpfV48pAsLdB4a5VCu+R2PUbYdxeBdP7pIjnbTx60E5k9RylTqV8D9+PTDJj2eJzyVVYHR4fA65c1KvdGC40Q8Pv4JfLxuDrpE6wuBnAAE7CcaJgdEcxPDjdlB9HZcAUPpTfkgwdmvtbc/qXhvuYJdg+gdnyR5bwJoUDdXBFoHxvEgbC18EDziGa3mIRMao6xSd12EroyR8gJtC0uOuvlJOr+dLCFgOnb5Cv73ZQgwjBof9XCUr4IHyVdEf54+p4y6VTAURUleo2AES0I+vkcUmwUITa5re3cSdNxxrgT0B+vAuJKnhtri7dcBN8tN/QL72L2zLb7bJyrvzPIyzvLpVtM1vTmVLhWgdD5dyXCaFBCq+r/mBZRSAulWaZLBK77fbWgxQBnn5V6+yZKpAyR+QJO/Na5PZp/89z4np1PFHXjee4AoLhWwYObI/MDkDUXlmTq+3J/kItQsI676n3iJ+JXt71bmu8ndlE8J390WfDAkmyIcTO7SGAAEdW8p4YKmFtMQgkIyQl0yQrl0fhw/tWC6erE6ugD/IsGMd/oKF9DNR7+2TdWljPr/Nd8RveMt/VStpKKlrKnddRJuLbMbHsf+LOlF2nFRWrdkTJ13XAfHFtmYX0cfNr+l8ZxOx6u2HNv7UuKRIXeVz5TcRufW4QSeKenF13i10qoO5vdGY0HHYVIZQd7YAAAAAAAAAAABFWElGfgAAAEV4aWYAAE1NACoAAAAIAAUBEgADAAAAAQABAAABGgAFAAAAAQAAAEoBGwAFAAAAAQAAAFIBKAADAAAAAQACAACHaQAEAAAAAQAAAFoAAAAAAAAASAAAAAEAAABIAAAAAQACoAIABAAAAAEAAAEAoAMABAAAAAEAAAEAAAAAAA==" alt="Uniweb Pte. Ltd.">
+      <div>
+        <div class="rh-name">Uniweb Pte. Ltd.</div>
+        <div class="rh-sub">Licensed Payment Institution · MAS PS20200248</div>
+      </div>
+    </div>
+    <div class="rh-right">
+      <div class="rh-label">Settlement Report</div>
+      <div class="rh-period">January 2026</div>
+      <div class="rh-ref">Ref: UW-SR-2026-01-0042 · Issued 1 Feb 2026, 08:00 SGT</div>
+    </div>
+  </div>
+
+  <!-- Merchant Strip -->
+  <div class="merchant-strip">
+    <div class="ms-cell">
+      <div class="ms-label">Merchant</div>
+      <div class="ms-value">Song Fa Bak Kut Teh Food Pte. Ltd.</div>
+      <div class="ms-sub">MID-UW-2024-0042 · UEN 201234567E</div>
+    </div>
+    <div class="ms-cell">
+      <div class="ms-label">Settlement Bank</div>
+      <div class="ms-value">DBS Bank Singapore</div>
+      <div class="ms-sub">Account ••••-••••-4821</div>
+    </div>
+    <div class="ms-cell">
+      <div class="ms-label">Settlement Model</div>
+      <div class="ms-value">T+1 · Next Business Day</div>
+      <div class="ms-sub">Currency: SGD · Rolling Reserve: Not Applicable</div>
+    </div>
+  </div>
+
+  <!-- ════════ BODY ════════ -->
+  <div class="rpt-body">
+
+    <!-- ── SECTION 1: SETTLEMENT SUMMARY ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-title">Settlement Summary</div>
+        <div class="sec-sub">Period: 1 January 2026 – 31 January 2026</div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-bar" style="background:var(--brand)"></div>
+          <div class="kpi-label">Total Gross Volume</div>
+          <div class="kpi-val">SGD 489,264,146</div>
+          <div class="kpi-sub">106,466 transactions</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-bar" style="background:var(--red)"></div>
+          <div class="kpi-label">Total Fees Deducted</div>
+          <div class="kpi-val">SGD 7,495,744.81</div>
+          <div class="kpi-sub">Blended MDR 1.531%</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-bar" style="background:var(--green)"></div>
+          <div class="kpi-label">Total Net Payout</div>
+          <div class="kpi-val" style="color:var(--green)">SGD 481,768,401.19</div>
+          <div class="kpi-sub">Paid to DBS ••••4821</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-bar" style="background:var(--amber)"></div>
+          <div class="kpi-label">Refunds Processed</div>
+          <div class="kpi-val">SGD 1,266,039.00</div>
+          <div class="kpi-sub">187 transactions · 0.259% of GMV</div>
+        </div>
+      </div>
+
+      <!-- Financial Reconciliation -->
+      <div class="tbl-wrap">
+        <table>
+          <colgroup>
+            <col style="width:32%">
+            <col style="width:13%">
+            <col style="width:18%">
+            <col style="width:16%">
+            <col style="width:16%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th class="r">Transactions</th>
+              <th class="r">Gross (SGD)</th>
+              <th class="r">Fees (SGD)</th>
+              <th class="r">Net (SGD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="sec-row"><td colspan="5">Payment Card — International Card Networks</td></tr>
+            <tr>
+              <td class="indent">Visa</td>
+              <td class="mono r">51,965</td><td class="mono r">234,366,056.00</td>
+              <td class="mono red">3,937,349.74</td><td class="mono green">230,428,706.26</td>
+            </tr>
+            <tr>
+              <td class="indent">Mastercard</td>
+              <td class="mono r">36,717</td><td class="mono r">172,511,891.00</td>
+              <td class="mono red">2,898,199.77</td><td class="mono green">169,613,691.23</td>
+            </tr>
+            <tr>
+              <td class="indent">UnionPay</td>
+              <td class="mono r">546</td><td class="mono r">2,657,556.00</td>
+              <td class="mono red">44,646.94</td><td class="mono green">2,612,909.06</td>
+            </tr>
+            <tr>
+              <td class="indent">Diners / Discover</td>
+              <td class="mono r">31</td><td class="mono r">444,508.00</td>
+              <td class="mono red">7,467.73</td><td class="mono green">437,040.27</td>
+            </tr>
+            <tr>
+              <td class="indent" style="font-weight:600;color:var(--ink2)">Payment Card Sub-total</td>
+              <td class="mono r" style="font-weight:600">89,259</td>
+              <td class="mono r" style="font-weight:600">409,980,011.00</td>
+              <td class="mono red" style="font-weight:600">6,887,664.18</td>
+              <td class="mono green" style="font-weight:600">403,092,346.82</td>
+            </tr>
+            <tr class="sec-row"><td colspan="5">China Cross-Border Wallets — Alipay+ &amp; WeChat Pay (China-issued accounts only)</td></tr>
+            <tr>
+              <td class="indent">Alipay+</td>
+              <td class="mono r">8,638</td><td class="mono r">39,751,666.00</td>
+              <td class="mono red">318,013.33</td><td class="mono green">39,433,652.67</td>
+            </tr>
+            <tr>
+              <td class="indent">WeChat Pay</td>
+              <td class="mono r">7,065</td><td class="mono r">32,984,356.00</td>
+              <td class="mono red">263,874.85</td><td class="mono green">32,720,481.15</td>
+            </tr>
+            <tr>
+              <td class="indent" style="font-weight:600;color:var(--ink2)">China Wallets Sub-total</td>
+              <td class="mono r" style="font-weight:600">15,703</td>
+              <td class="mono r" style="font-weight:600">72,735,022.00</td>
+              <td class="mono red" style="font-weight:600">581,888.18</td>
+              <td class="mono green" style="font-weight:600">72,153,133.82</td>
+            </tr>
+            <tr class="sec-row"><td colspan="5">Local Instant Payment — Singapore</td></tr>
+            <tr>
+              <td class="indent">PayNow QR</td>
+              <td class="mono r">1,504</td><td class="mono r">6,548,113.00</td>
+              <td class="mono red">26,192.45</td><td class="mono green">6,521,920.55</td>
+            </tr>
+            <tr class="sec-row"><td colspan="5">Adjustments</td></tr>
+            <tr>
+              <td class="indent" style="color:var(--red)">Refunds</td>
+              <td class="mono r" style="color:var(--red)">187</td>
+              <td class="mono r" style="color:var(--red)">(1,266,039.00)</td>
+              <td class="mono r">—</td>
+              <td class="mono r" style="color:var(--red)">(1,266,039.00)</td>
+            </tr>
+            <tr class="total-row">
+              <td>NET SETTLEMENT — JANUARY 2026</td>
+              <td class="r mono">106,279</td>
+              <td class="r mono">488,998,107.00</td>
+              <td class="r mono red">7,495,744.81</td>
+              <td class="green mono">481,502,362.19</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /section 1 -->
+
+    <div class="sec-divider"></div>
+
+    <!-- ── SECTION 2: PAYMENT METHOD BREAKDOWN ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-title">Payment Method Breakdown</div>
+        <div class="sec-sub">MDR rates per merchant agreement · all amounts SGD</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <colgroup>
+            <col style="width:18%">
+            <col style="width:20%">
+            <col style="width:11%">
+            <col style="width:14%">
+            <col style="width:9%">
+            <col style="width:13%">
+            <col style="width:14%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Network / Issuer</th>
+              <th class="r">Transactions</th>
+              <th class="r">Gross (SGD)</th>
+              <th class="r">MDR</th>
+              <th class="r">Fees (SGD)</th>
+              <th class="r">Net (SGD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Payment Card -->
+            <tr class="sec-row"><td colspan="7">Payment Card — International Card Networks</td></tr>
+            <tr>
+              <td><span class="dot" style="background:#1a56db"></span><strong>Visa</strong></td>
+              <td class="dim">Visa International</td>
+              <td class="mono r">51,965</td><td class="mono r">234,366,056.00</td>
+              <td class="mono r">1.680%</td>
+              <td class="mono red">3,937,349.74</td><td class="mono green">230,428,706.26</td>
+            </tr>
+            <tr>
+              <td><span class="dot" style="background:#e3433e"></span><strong>Mastercard</strong></td>
+              <td class="dim">Mastercard Worldwide</td>
+              <td class="mono r">36,717</td><td class="mono r">172,511,891.00</td>
+              <td class="mono r">1.680%</td>
+              <td class="mono red">2,898,199.77</td><td class="mono green">169,613,691.23</td>
+            </tr>
+            <tr>
+              <td><span class="dot" style="background:#c0392b"></span><strong>UnionPay</strong></td>
+              <td class="dim">UnionPay International</td>
+              <td class="mono r">546</td><td class="mono r">2,657,556.00</td>
+              <td class="mono r">1.680%</td>
+              <td class="mono red">44,646.94</td><td class="mono green">2,612,909.06</td>
+            </tr>
+            <tr>
+              <td><span class="dot" style="background:#6b7280"></span><strong>Diners/Discover</strong></td>
+              <td class="dim">Diners Club Intl.</td>
+              <td class="mono r">31</td><td class="mono r">444,508.00</td>
+              <td class="mono r">1.680%</td>
+              <td class="mono red">7,467.73</td><td class="mono green">437,040.27</td>
+            </tr>
+            <tr class="week-row">
+              <td colspan="2"><strong>Payment Card Sub-total</strong></td>
+              <td class="mono r"><strong>89,259</strong></td>
+              <td class="mono r"><strong>409,980,011.00</strong></td>
+              <td class="mono r"><strong>1.680%</strong></td>
+              <td class="mono r" style="color:var(--red);font-weight:700">6,887,664.18</td>
+              <td class="mono r" style="color:var(--green);font-weight:700">403,092,346.82</td>
+            </tr>
+            <!-- China Wallets -->
+            <tr class="sec-row"><td colspan="7">China Cross-Border Wallets — Processed for China-issued accounts only</td></tr>
+            <tr>
+              <td><span class="dot" style="background:#1677ff"></span><strong>Alipay+</strong></td>
+              <td class="dim">Ant Group · China</td>
+              <td class="mono r">8,638</td><td class="mono r">39,751,666.00</td>
+              <td class="mono r">0.800%</td>
+              <td class="mono red">318,013.33</td><td class="mono green">39,433,652.67</td>
+            </tr>
+            <tr>
+              <td><span class="dot" style="background:#07c160"></span><strong>WeChat Pay</strong></td>
+              <td class="dim">Tencent · China</td>
+              <td class="mono r">7,065</td><td class="mono r">32,984,356.00</td>
+              <td class="mono r">0.800%</td>
+              <td class="mono red">263,874.85</td><td class="mono green">32,720,481.15</td>
+            </tr>
+            <tr class="week-row">
+              <td colspan="2"><strong>China Wallets Sub-total</strong></td>
+              <td class="mono r"><strong>15,703</strong></td>
+              <td class="mono r"><strong>72,735,022.00</strong></td>
+              <td class="mono r"><strong>0.800%</strong></td>
+              <td class="mono r" style="color:var(--red);font-weight:700">581,888.18</td>
+              <td class="mono r" style="color:var(--green);font-weight:700">72,153,133.82</td>
+            </tr>
+            <!-- PayNow -->
+            <tr class="sec-row"><td colspan="7">Local Instant Payment — Singapore MAS PayNow</td></tr>
+            <tr>
+              <td><span class="dot" style="background:#8b5cf6"></span><strong>PayNow QR</strong></td>
+              <td class="dim">MAS / DBS Bank · Singapore</td>
+              <td class="mono r">1,504</td><td class="mono r">6,548,113.00</td>
+              <td class="mono r">0.400%</td>
+              <td class="mono red">26,192.45</td><td class="mono green">6,521,920.55</td>
+            </tr>
+            <!-- Grand total -->
+            <tr class="total-row">
+              <td colspan="2">GRAND TOTAL</td>
+              <td class="r mono">106,466</td>
+              <td class="r mono">489,264,146.00</td>
+              <td class="r mono">1.531%</td>
+              <td class="red mono">7,495,744.81</td>
+              <td class="green mono">481,768,401.19</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /section 2 -->
+
+    <!-- ── SECTION 3: CARD ISSUING COUNTRIES ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-title">Card Issuing Country Distribution</div>
+        <div class="sec-sub">Based on card_issuer_code field · Payment Card transactions only · 89,259 txns</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <colgroup>
+            <col style="width:26%">
+            <col style="width:7%">
+            <col style="width:12%">
+            <col style="width:18%">
+            <col style="width:14%">
+            <col style="width:13%">
+            <col style="width:10%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th class="c">ISO</th>
+              <th class="r">Transactions</th>
+              <th class="r">Gross (SGD)</th>
+              <th class="r">% of Card GMV</th>
+              <th class="r">Avg. Txn (SGD)</th>
+              <th class="c">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#f0fdf4 !important">
+              <td><strong>🇸🇬 Singapore</strong></td>
+              <td class="mono c">SG</td>
+              <td class="mono r">66,578</td><td class="mono r">303,236,259.00</td>
+              <td class="mono r">73.96%</td><td class="mono r">4,554</td>
+              <td class="c"><span class="badge b-ok"><span class="badge-dot"></span>Local</span></td>
+            </tr>
+            <tr><td>🇰🇷 South Korea</td><td class="mono c">KR</td><td class="mono r">4,735</td><td class="mono r">22,329,184.00</td><td class="mono r">5.45%</td><td class="mono r">4,717</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇨🇳 China</td><td class="mono c">CN</td><td class="mono r">4,696</td><td class="mono r">21,090,611.00</td><td class="mono r">5.14%</td><td class="mono r">4,492</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇹🇼 Taiwan</td><td class="mono c">TW</td><td class="mono r">3,249</td><td class="mono r">15,998,556.00</td><td class="mono r">3.90%</td><td class="mono r">4,924</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇯🇵 Japan</td><td class="mono c">JP</td><td class="mono r">2,213</td><td class="mono r">8,839,864.00</td><td class="mono r">2.15%</td><td class="mono r">3,994</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇭🇰 Hong Kong</td><td class="mono c">HK</td><td class="mono r">1,368</td><td class="mono r">7,412,599.00</td><td class="mono r">1.81%</td><td class="mono r">5,418</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇺🇸 United States</td><td class="mono c">US</td><td class="mono r">1,235</td><td class="mono r">5,779,701.00</td><td class="mono r">1.41%</td><td class="mono r">4,679</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇦🇺 Australia</td><td class="mono c">AU</td><td class="mono r">1,018</td><td class="mono r">5,244,084.00</td><td class="mono r">1.28%</td><td class="mono r">5,151</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇹🇭 Thailand</td><td class="mono c">TH</td><td class="mono r">656</td><td class="mono r">3,320,524.00</td><td class="mono r">0.81%</td><td class="mono r">5,062</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇲🇾 Malaysia</td><td class="mono c">MY</td><td class="mono r">533</td><td class="mono r">2,523,150.00</td><td class="mono r">0.62%</td><td class="mono r">4,734</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇮🇩 Indonesia</td><td class="mono c">ID</td><td class="mono r">452</td><td class="mono r">2,289,202.00</td><td class="mono r">0.56%</td><td class="mono r">5,064</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇵🇭 Philippines</td><td class="mono c">PH</td><td class="mono r">328</td><td class="mono r">1,850,082.00</td><td class="mono r">0.45%</td><td class="mono r">5,641</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇬🇧 United Kingdom</td><td class="mono c">GB</td><td class="mono r">250</td><td class="mono r">1,116,457.00</td><td class="mono r">0.27%</td><td class="mono r">4,466</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇻🇳 Vietnam</td><td class="mono c">VN</td><td class="mono r">195</td><td class="mono r">941,176.00</td><td class="mono r">0.23%</td><td class="mono r">4,826</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td>🇨🇦 Canada</td><td class="mono c">CA</td><td class="mono r">195</td><td class="mono r">849,192.00</td><td class="mono r">0.21%</td><td class="mono r">4,355</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr><td class="dim">Other Countries</td><td class="mono c dim">—</td><td class="mono r dim">597</td><td class="mono r dim">3,159,370.00</td><td class="mono r dim">0.77%</td><td class="mono r dim">5,292</td><td class="c"><span class="badge b-warn"><span class="badge-dot"></span>Foreign</span></td></tr>
+            <tr class="total-row">
+              <td>TOTAL — ALL COUNTRIES</td>
+              <td class="c mono">—</td>
+              <td class="r mono">89,259</td>
+              <td class="r mono">409,980,011.00</td>
+              <td class="r mono">100.00%</td>
+              <td class="r mono">4,594</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:10.5px;color:var(--ink4);margin-top:10px;line-height:1.6;">
+        <strong style="color:var(--ink3)">Note on China transactions:</strong>
+        CN-issued cards above (SGD 21,090,611 · 4,696 txns) are <em>card network transactions</em> (Visa / Mastercard / UnionPay) processed via the international card acquirer.
+        Alipay+ and WeChat Pay are a <em>separate</em> payment channel — they accept China-issued accounts only and are routed through a dedicated China cross-border wallet acquirer at a lower MDR of 0.800%, reported independently in Section 2.
+      </p>
+    </div><!-- /section 3 -->
+
+    <div class="sec-divider"></div>
+
+    <!-- ── SECTION 4: DAILY SETTLEMENT SCHEDULE ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-title">Daily Settlement Schedule</div>
+        <div class="sec-sub">T+1 · 31 batches · settled to DBS ••••4821</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <colgroup>
+            <col style="width:12%">
+            <col style="width:6%">
+            <col style="width:13%">
+            <col style="width:11%">
+            <col style="width:16%">
+            <col style="width:14%">
+            <col style="width:16%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Day</th>
+              <th>Batch ID</th>
+              <th class="r">Transactions</th>
+              <th class="r">Gross (SGD)</th>
+              <th class="r">Fees (SGD)</th>
+              <th class="r">Net Payout (SGD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono nowrap">2026-01-01</td><td class="dim">Thu</td><td class="mono dim">SF-20260101</td><td class="mono r">3,938</td><td class="mono r">19,212,903.00</td><td class="mono red">299,084.28</td><td class="mono green">18,913,818.72</td></tr>
+            <tr><td class="mono nowrap">2026-01-02</td><td class="dim">Fri</td><td class="mono dim">SF-20260102</td><td class="mono r">3,519</td><td class="mono r">15,547,743.00</td><td class="mono red">240,491.64</td><td class="mono green">15,307,251.36</td></tr>
+            <tr><td class="mono nowrap">2026-01-03</td><td class="dim">Sat</td><td class="mono dim">SF-20260103</td><td class="mono r">3,606</td><td class="mono r">17,004,834.00</td><td class="mono red">269,414.56</td><td class="mono green">16,735,419.44</td></tr>
+            <tr><td class="mono nowrap">2026-01-04</td><td class="dim">Sun</td><td class="mono dim">SF-20260104</td><td class="mono r">3,374</td><td class="mono r">15,992,717.00</td><td class="mono red">256,847.76</td><td class="mono green">15,735,869.24</td></tr>
+            <tr><td class="mono nowrap">2026-01-05</td><td class="dim">Mon</td><td class="mono dim">SF-20260105</td><td class="mono r">2,579</td><td class="mono r">10,706,273.00</td><td class="mono red">171,793.90</td><td class="mono green">10,534,479.10</td></tr>
+            <tr><td class="mono nowrap">2026-01-06</td><td class="dim">Tue</td><td class="mono dim">SF-20260106</td><td class="mono r">2,582</td><td class="mono r">10,689,899.00</td><td class="mono red">170,020.75</td><td class="mono green">10,519,878.25</td></tr>
+            <tr><td class="mono nowrap">2026-01-07</td><td class="dim">Wed</td><td class="mono dim">SF-20260107</td><td class="mono r">2,733</td><td class="mono r">11,145,459.00</td><td class="mono red">178,111.32</td><td class="mono green">10,967,347.68</td></tr>
+            <tr class="week-row">
+              <td colspan="2"><strong>Week 1</strong></td><td class="dim">1 – 7 Jan</td>
+              <td class="mono r"><strong>22,331</strong></td>
+              <td class="mono r"><strong>100,299,828.00</strong></td>
+              <td class="mono r" style="color:var(--red);font-weight:700">1,585,764.21</td>
+              <td class="mono r" style="color:var(--green);font-weight:700">98,714,063.79</td>
+            </tr>
+            <tr><td class="mono nowrap">2026-01-08</td><td class="dim">Thu</td><td class="mono dim">SF-20260108</td><td class="mono r">2,806</td><td class="mono r">11,823,739.00</td><td class="mono red">187,066.20</td><td class="mono green">11,636,672.80</td></tr>
+            <tr><td class="mono nowrap">2026-01-09</td><td class="dim">Fri</td><td class="mono dim">SF-20260109</td><td class="mono r">3,282</td><td class="mono r">14,495,674.00</td><td class="mono red">227,731.57</td><td class="mono green">14,267,942.43</td></tr>
+            <tr><td class="mono nowrap">2026-01-10</td><td class="dim">Sat</td><td class="mono dim">SF-20260110</td><td class="mono r">3,797</td><td class="mono r">18,058,877.00</td><td class="mono red">287,516.93</td><td class="mono green">17,771,360.07</td></tr>
+            <tr><td class="mono nowrap">2026-01-11</td><td class="dim">Sun</td><td class="mono dim">SF-20260111</td><td class="mono r">3,745</td><td class="mono r">18,200,050.00</td><td class="mono red">290,147.25</td><td class="mono green">17,909,902.75</td></tr>
+            <tr><td class="mono nowrap">2026-01-12</td><td class="dim">Mon</td><td class="mono dim">SF-20260112</td><td class="mono r">2,774</td><td class="mono r">11,855,673.00</td><td class="mono red">185,934.02</td><td class="mono green">11,669,738.98</td></tr>
+            <tr><td class="mono nowrap">2026-01-13</td><td class="dim">Tue</td><td class="mono dim">SF-20260113</td><td class="mono r">2,907</td><td class="mono r">12,393,453.00</td><td class="mono red">191,760.05</td><td class="mono green">12,201,692.95</td></tr>
+            <tr><td class="mono nowrap">2026-01-14</td><td class="dim">Wed</td><td class="mono dim">SF-20260114</td><td class="mono r">3,040</td><td class="mono r">13,286,387.00</td><td class="mono red">206,148.86</td><td class="mono green">13,080,238.14</td></tr>
+            <tr class="week-row">
+              <td colspan="2"><strong>Week 2</strong></td><td class="dim">8 – 14 Jan</td>
+              <td class="mono r"><strong>22,351</strong></td>
+              <td class="mono r"><strong>100,113,853.00</strong></td>
+              <td class="mono r" style="color:var(--red);font-weight:700">1,576,304.88</td>
+              <td class="mono r" style="color:var(--green);font-weight:700">98,537,548.12</td>
+            </tr>
+            <tr><td class="mono nowrap">2026-01-15</td><td class="dim">Thu</td><td class="mono dim">SF-20260115</td><td class="mono r">3,181</td><td class="mono r">14,279,284.00</td><td class="mono red">217,302.99</td><td class="mono green">14,061,981.01</td></tr>
+            <tr><td class="mono nowrap">2026-01-16</td><td class="dim">Fri</td><td class="mono dim">SF-20260116</td><td class="mono r">3,532</td><td class="mono r">15,752,418.00</td><td class="mono red">241,970.30</td><td class="mono green">15,510,447.70</td></tr>
+            <tr><td class="mono nowrap">2026-01-17</td><td class="dim">Sat</td><td class="mono dim">SF-20260117</td><td class="mono r">4,083</td><td class="mono r">19,551,624.00</td><td class="mono red">301,245.39</td><td class="mono green">19,250,378.61</td></tr>
+            <tr><td class="mono nowrap">2026-01-18</td><td class="dim">Sun</td><td class="mono dim">SF-20260118</td><td class="mono r">4,006</td><td class="mono r">19,999,599.00</td><td class="mono red">311,576.25</td><td class="mono green">19,688,022.75</td></tr>
+            <tr><td class="mono nowrap">2026-01-19</td><td class="dim">Mon</td><td class="mono dim">SF-20260119</td><td class="mono r">3,122</td><td class="mono r">14,034,484.00</td><td class="mono red">211,921.81</td><td class="mono green">13,822,562.19</td></tr>
+            <tr><td class="mono nowrap">2026-01-20</td><td class="dim">Tue</td><td class="mono dim">SF-20260120</td><td class="mono r">3,232</td><td class="mono r">14,224,234.00</td><td class="mono red">211,549.72</td><td class="mono green">14,012,684.28</td></tr>
+            <tr><td class="mono nowrap">2026-01-21</td><td class="dim">Wed</td><td class="mono dim">SF-20260121</td><td class="mono r">3,292</td><td class="mono r">14,852,493.00</td><td class="mono red">221,934.96</td><td class="mono green">14,630,558.04</td></tr>
+            <tr class="week-row">
+              <td colspan="2"><strong>Week 3</strong></td><td class="dim">15 – 21 Jan</td>
+              <td class="mono r"><strong>24,448</strong></td>
+              <td class="mono r"><strong>112,694,136.00</strong></td>
+              <td class="mono r" style="color:var(--red);font-weight:700">1,717,501.42</td>
+              <td class="mono r" style="color:var(--green);font-weight:700">110,976,634.58</td>
+            </tr>
+            <tr><td class="mono nowrap">2026-01-22</td><td class="dim">Thu</td><td class="mono dim">SF-20260122</td><td class="mono r">3,418</td><td class="mono r">15,415,454.00</td><td class="mono red">228,950.99</td><td class="mono green">15,186,503.01</td></tr>
+            <tr><td class="mono nowrap">2026-01-23</td><td class="dim">Fri</td><td class="mono dim">SF-20260123</td><td class="mono r">3,818</td><td class="mono r">17,460,443.00</td><td class="mono red">259,921.95</td><td class="mono green">17,200,521.05</td></tr>
+            <tr><td class="mono nowrap">2026-01-24</td><td class="dim">Sat</td><td class="mono dim">SF-20260124</td><td class="mono r">4,309</td><td class="mono r">21,051,371.00</td><td class="mono red">319,431.37</td><td class="mono green">20,731,939.63</td></tr>
+            <tr><td class="mono nowrap">2026-01-25</td><td class="dim">Sun</td><td class="mono dim">SF-20260125</td><td class="mono r">4,206</td><td class="mono r">20,628,521.00</td><td class="mono red">312,193.04</td><td class="mono green">20,316,327.96</td></tr>
+            <tr><td class="mono nowrap">2026-01-26</td><td class="dim">Mon</td><td class="mono dim">SF-20260126</td><td class="mono r">3,277</td><td class="mono r">15,423,357.00</td><td class="mono red">226,357.46</td><td class="mono green">15,196,999.54</td></tr>
+            <tr><td class="mono nowrap">2026-01-27</td><td class="dim">Tue</td><td class="mono dim">SF-20260127</td><td class="mono r">3,477</td><td class="mono r">15,516,990.00</td><td class="mono red">225,360.33</td><td class="mono green">15,291,629.67</td></tr>
+            <tr><td class="mono nowrap">2026-01-28</td><td class="dim">Wed</td><td class="mono dim">SF-20260128</td><td class="mono r">3,368</td><td class="mono r">15,679,731.00</td><td class="mono red">229,472.74</td><td class="mono green">15,450,258.26</td></tr>
+            <tr class="week-row">
+              <td colspan="2"><strong>Week 4</strong></td><td class="dim">22 – 28 Jan</td>
+              <td class="mono r"><strong>25,873</strong></td>
+              <td class="mono r"><strong>121,175,867.00</strong></td>
+              <td class="mono r" style="color:var(--red);font-weight:700">1,801,687.88</td>
+              <td class="mono r" style="color:var(--green);font-weight:700">119,374,179.12</td>
+            </tr>
+            <tr><td class="mono nowrap">2026-01-29</td><td class="dim">Thu</td><td class="mono dim">SF-20260129</td><td class="mono r">3,472</td><td class="mono r">16,172,940.00</td><td class="mono red">238,898.37</td><td class="mono green">15,934,041.63</td></tr>
+            <tr><td class="mono nowrap">2026-01-30</td><td class="dim">Fri</td><td class="mono dim">SF-20260130</td><td class="mono r">3,821</td><td class="mono r">18,033,381.00</td><td class="mono red">265,142.06</td><td class="mono green">17,768,238.94</td></tr>
+            <tr><td class="mono nowrap">2026-01-31</td><td class="dim">Sat</td><td class="mono dim">SF-20260131</td><td class="mono r">4,170</td><td class="mono r">20,774,141.00</td><td class="mono red">310,446.02</td><td class="mono green">20,463,694.98</td></tr>
+            <tr class="week-row">
+              <td colspan="2"><strong>Week 5</strong></td><td class="dim">29 – 31 Jan</td>
+              <td class="mono r"><strong>11,463</strong></td>
+              <td class="mono r"><strong>54,980,462.00</strong></td>
+              <td class="mono r" style="color:var(--red);font-weight:700">814,486.45</td>
+              <td class="mono r" style="color:var(--green);font-weight:700">54,165,975.55</td>
+            </tr>
+            <tr class="total-row">
+              <td>JANUARY 2026 TOTAL</td><td></td>
+              <td class="mono dim">31 batches</td>
+              <td class="r mono">106,466</td>
+              <td class="r mono">489,264,146.00</td>
+              <td class="red mono">7,495,744.81</td>
+              <td class="green mono">481,768,401.19</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /section 4 -->
+
+    <div class="sec-divider"></div>
+
+    <!-- ── SECTION 5: OUTLET PERFORMANCE ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-title">Outlet Performance Summary</div>
+        <div class="sec-sub">GMV by outlet · January 2026 · estimated fees apportioned by GMV share</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <colgroup>
+            <col style="width:4%">
+            <col style="width:20%">
+            <col style="width:19%">
+            <col style="width:10%">
+            <col style="width:14%">
+            <col style="width:7%">
+            <col style="width:12%">
+            <col style="width:14%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="c">#</th>
+              <th>Outlet Name</th>
+              <th>Location</th>
+              <th class="r">Txns</th>
+              <th class="r">Gross (SGD)</th>
+              <th class="r">Share</th>
+              <th class="r">Est. Fees</th>
+              <th class="r">Est. Net</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="top-1">
+              <td class="c mono" style="color:var(--brand);font-weight:700">1</td>
+              <td class="brand">Song Fa@Jewel</td>
+              <td class="dim">Jewel Changi Airport</td>
+              <td class="mono r">10,795</td><td class="mono r">46,575,457.00</td>
+              <td class="mono r">9.52%</td>
+              <td class="mono red">713,069.47</td><td class="mono green">45,862,387.53</td>
+            </tr>
+            <tr class="top-2">
+              <td class="c mono" style="color:var(--brand);font-weight:700">2</td>
+              <td class="brand">Song Fa@Chinatown Point</td>
+              <td class="dim">133 New Bridge Rd</td>
+              <td class="mono r">9,244</td><td class="mono r">42,343,152.00</td>
+              <td class="mono r">8.65%</td>
+              <td class="mono red">648,279.26</td><td class="mono green">41,694,872.74</td>
+            </tr>
+            <tr class="top-3">
+              <td class="c mono" style="color:var(--brand);font-weight:700">3</td>
+              <td class="brand">Song Fa@11 New Bridge Rd</td>
+              <td class="dim">11 New Bridge Rd</td>
+              <td class="mono r">9,416</td><td class="mono r">41,506,165.00</td>
+              <td class="mono r">8.48%</td>
+              <td class="mono red">635,469.39</td><td class="mono green">40,870,695.61</td>
+            </tr>
+            <tr><td class="c mono dim">4</td><td>Song Fa@TCP</td><td class="dim">Tampines Centrale</td><td class="mono r">6,428</td><td class="mono r">36,138,732.00</td><td class="mono r">7.39%</td><td class="mono red">553,283.64</td><td class="mono green">35,585,448.36</td></tr>
+            <tr><td class="c mono dim">5</td><td>Song Fa@Suntec City</td><td class="dim">Suntec City Mall</td><td class="mono r">6,871</td><td class="mono r">33,052,621.00</td><td class="mono r">6.76%</td><td class="mono red">506,135.37</td><td class="mono green">32,546,485.63</td></tr>
+            <tr><td class="c mono dim">6</td><td>Song Fa@JEM</td><td class="dim">JEM Shopping Centre</td><td class="mono r">7,900</td><td class="mono r">32,843,050.00</td><td class="mono r">6.71%</td><td class="mono red">502,931.68</td><td class="mono green">32,340,118.32</td></tr>
+            <tr><td class="c mono dim">7</td><td>Song Fa@17 New Bridge Rd</td><td class="dim">17 New Bridge Rd</td><td class="mono r">5,626</td><td class="mono r">32,258,127.00</td><td class="mono r">6.59%</td><td class="mono red">493,882.52</td><td class="mono green">31,764,244.48</td></tr>
+            <tr><td class="c mono dim">8</td><td>Song Fa@Vivo City</td><td class="dim">VivoCity, HarbourFront</td><td class="mono r">6,499</td><td class="mono r">28,862,206.00</td><td class="mono r">5.90%</td><td class="mono red">441,850.97</td><td class="mono green">28,420,355.03</td></tr>
+            <tr><td class="c mono dim">9</td><td>Song Fa@Velocity</td><td class="dim">Velocity @ Novena Sq.</td><td class="mono r">6,610</td><td class="mono r">26,210,923.00</td><td class="mono r">5.36%</td><td class="mono red">401,389.25</td><td class="mono green">25,809,533.75</td></tr>
+            <tr><td class="c mono dim">10</td><td>Song Fa@Harbourfront</td><td class="dim">HarbourFront Centre</td><td class="mono r">5,147</td><td class="mono r">26,188,924.00</td><td class="mono r">5.35%</td><td class="mono red">401,052.14</td><td class="mono green">25,787,871.86</td></tr>
+            <tr><td class="c mono dim">11</td><td>Song Fa@Waterway Point</td><td class="dim">Waterway Point, Punggol</td><td class="mono r">4,900</td><td class="mono r">24,100,000.00</td><td class="mono r">4.93%</td><td class="mono red">369,031.00</td><td class="mono green">23,730,969.00</td></tr>
+            <tr><td class="c mono dim">12</td><td>Song Fa@Westgate</td><td class="dim">Westgate Mall, Jurong</td><td class="mono r">4,800</td><td class="mono r">22,100,000.00</td><td class="mono r">4.52%</td><td class="mono red">338,381.00</td><td class="mono green">21,761,619.00</td></tr>
+            <tr><td class="c mono dim">13</td><td>Song Fa@Compass One</td><td class="dim">Compass One Mall</td><td class="mono r">4,200</td><td class="mono r">19,800,000.00</td><td class="mono r">4.05%</td><td class="mono red">303,138.00</td><td class="mono green">19,496,862.00</td></tr>
+            <tr><td class="c mono dim">—</td><td class="dim">Other Outlets (10)</td><td class="dim">Various</td><td class="mono r dim">4,030</td><td class="mono r dim">25,484,789.00</td><td class="mono r dim">5.21%</td><td class="mono dim" style="text-align:right">390,272.91</td><td class="mono r dim">25,094,516.09</td></tr>
+            <tr class="total-row">
+              <td class="c">—</td><td>TOTAL — ALL OUTLETS</td><td></td>
+              <td class="r mono">106,466</td>
+              <td class="r mono">489,264,146.00</td>
+              <td class="r mono">100.0%</td>
+              <td class="red mono">7,495,745.60</td>
+              <td class="green mono">481,768,400.40</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /section 5 -->
+
+    <!-- ── SECTION 6: REFUND SUMMARY ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-title">Refund Summary</div>
+        <div class="sec-sub">All refund transactions · January 2026</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <colgroup>
+            <col style="width:20%">
+            <col style="width:12%">
+            <col style="width:16%">
+            <col style="width:12%">
+            <col style="width:40%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Refund Type</th>
+              <th class="r">Count</th>
+              <th class="r">Amount (SGD)</th>
+              <th class="r">% of GMV</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge b-warn"><span class="badge-dot"></span>Same-Day Refund</span></td>
+              <td class="mono r">181</td>
+              <td class="mono r" style="color:var(--red)">1,235,563.00</td>
+              <td class="mono r">0.253%</td>
+              <td class="dim">Refund processed on the same calendar day as original transaction</td>
+            </tr>
+            <tr>
+              <td><span class="badge b-err"><span class="badge-dot"></span>Partial Refund</span></td>
+              <td class="mono r">6</td>
+              <td class="mono r" style="color:var(--red)">30,476.00</td>
+              <td class="mono r">0.006%</td>
+              <td class="dim">Partial amount returned to original payment method</td>
+            </tr>
+            <tr class="total-row" style="">
+              <td style="color:var(--red)">TOTAL REFUNDS</td>
+              <td class="r mono" style="color:var(--red)">187</td>
+              <td class="r mono" style="color:var(--red)">(1,266,039.00)</td>
+              <td class="r mono" style="color:var(--red)">0.259%</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /section 6 -->
+
+    <!-- ── SECTION 7: FINAL PAYOUT CONFIRMATION ── -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-title">Final Net Payout Confirmation</div>
+        <div class="sec-sub">Cumulative settlement · January 2026</div>
+      </div>
+      <div class="payout-box">
+        <div class="po-left">
+          <div class="po-label">Total Net Payout — January 2026</div>
+          <div class="po-amount">481,768,401.19</div>
+          <div class="po-ccy">Singapore Dollars (SGD)</div>
+          <div class="po-note">
+            Paid in 31 daily T+1 batches<br>
+            DBS Bank Singapore · Account ••••-••••-4821<br>
+            Merchant: Song Fa Bak Kut Teh Food Pte. Ltd.
+          </div>
+        </div>
+        <div class="po-right">
+          <div class="meta-row"><span class="meta-key">Settlement Period</span><span class="meta-val">1 Jan 2026 – 31 Jan 2026</span></div>
+          <div class="meta-row"><span class="meta-key">Total Batches</span><span class="meta-val">31 daily batches</span></div>
+          <div class="meta-row"><span class="meta-key">Gross Volume</span><span class="meta-val">SGD 489,264,146.00</span></div>
+          <div class="meta-row"><span class="meta-key">Total Fees</span><span class="meta-val" style="color:var(--red)">SGD 7,495,744.81</span></div>
+          <div class="meta-row"><span class="meta-key">Settlement Model</span><span class="meta-val">T+1 — Next Business Day</span></div>
+          <div class="meta-row"><span class="meta-key">Rolling Reserve</span><span class="meta-val" style="color:var(--ink4)">Not Applicable</span></div>
+          <div class="meta-row"><span class="meta-key">Report Generated</span><span class="meta-val">1 Feb 2026, 08:00 SGT</span></div>
+        </div>
+      </div>
+    </div><!-- /section 7 -->
+
+      <div class="disclaimer">
+        <strong>Disclaimer &amp; Notes</strong> — This settlement report is generated by Uniweb Pte. Ltd. and is intended solely for Song Fa Bak Kut Teh Food Pte. Ltd. (MID-UW-2024-0042). All amounts are in Singapore Dollars (SGD). Fees reflect the Merchant Discount Rate (MDR) per payment method as agreed in the merchant agreement. <strong>Alipay+ and WeChat Pay</strong> are China cross-border wallet payment methods that accept China-issued accounts only; they are processed through a dedicated China acquirer route at 0.800% MDR and are entirely separate from international card network transactions. Estimated outlet fees are apportioned by GMV share and may differ from individual batch statements. This report does not constitute a tax invoice. For queries contact <strong>settlements@uniweb.com.sg</strong> or your assigned Relationship Manager.
+      </div>
+
+  </div><!-- /rpt-body -->
+
+  <!-- Report Footer -->
+  <div class="rpt-footer">
+    <div class="rf-l">
+      © 2026 Uniweb Pte. Ltd. · Licensed Payment Institution (Singapore)<br>
+      <span style="font-size:10px">MAS PS20200248 · This document is confidential and intended solely for the named merchant</span>
+    </div>
+    <div class="rf-r">
+      <span class="rf-mono">UW-SR-2026-01-0042</span><br>
+      <span style="font-size:10px">Page 1 of 1 · Generated 1 February 2026</span>
+    </div>
+  </div>
+
+</div><!-- /report -->
+</div><!-- /page-wrap -->
+
+</body>
+</html>
