@@ -4,23 +4,26 @@ import { Monitor, Smartphone, Settings } from "lucide-react";
 import uniwebLogo from "@/assets/uniweb-logo.jpg";
 
 const Index: React.FC = () => (
-  <div className="min-h-screen flex flex-col items-center justify-center bg-background p-8">
-    <img src={uniwebLogo} alt="Uniweb" className="w-20 h-20 rounded-2xl mb-6 shadow-lg" />
-    <h1 className="text-2xl font-bold text-foreground mb-2">Uniweb Smart POS</h1>
-    <p className="text-muted-foreground mb-8">Select a surface to explore</p>
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl w-full">
-      {[
-        { to: "/tablet", icon: Monitor, title: "Tablet POS", desc: "Cashier workstation" },
-        { to: "/mobile", icon: Smartphone, title: "Mobile POS", desc: "Handheld ordering" },
-        { to: "/admin", icon: Settings, title: "Admin", desc: "Merchant portal" },
-      ].map(s => (
-        <Link key={s.to} to={s.to}
-          className="flex flex-col items-center gap-3 p-6 rounded-xl bg-card border-1.5 border-border hover:border-primary/40 hover:shadow-md transition-all active:scale-95">
-          <s.icon className="w-8 h-8 text-primary" />
-          <h2 className="text-sm font-bold text-foreground">{s.title}</h2>
-          <p className="text-xs text-muted-foreground">{s.desc}</p>
-        </Link>
-      ))}
+  <div className="min-h-screen bg-background flex items-center justify-center p-6">
+    <div className="max-w-2xl w-full text-center">
+      <img src={uniwebLogo} alt="Uniweb" className="w-16 h-16 rounded-2xl mx-auto mb-5" />
+      <h1 className="text-2xl font-bold text-foreground tracking-tight mb-1">Uniweb Smart POS</h1>
+      <p className="text-[13px] text-muted-foreground mb-10">Select a surface to explore</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {[
+          { to: "/tablet", icon: Monitor, title: "Tablet POS", desc: "Cashier workstation" },
+          { to: "/mobile", icon: Smartphone, title: "Mobile POS", desc: "Handheld ordering" },
+          { to: "/admin", icon: Settings, title: "Admin", desc: "Merchant portal" },
+        ].map(s => (
+          <Link key={s.to} to={s.to} className="uniweb-card p-6 hover:border-primary/40 hover:shadow-md transition-all group">
+            <div className="w-12 h-12 rounded-[11px] bg-status-blue-light flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/15 transition-colors">
+              <s.icon className="h-6 w-6 text-primary" />
+            </div>
+            <h2 className="font-semibold text-foreground text-[13px] mb-1">{s.title}</h2>
+            <p className="text-xs text-muted-foreground">{s.desc}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   </div>
 );

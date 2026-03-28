@@ -8,39 +8,55 @@
   :root {
     --background: 36 14% 95%;
     --foreground: 40 7% 10%;
+
     --card: 0 0% 100%;
     --card-foreground: 40 7% 10%;
+
     --popover: 0 0% 100%;
     --popover-foreground: 40 7% 10%;
+
     --primary: 221 63% 33%;
     --primary-foreground: 0 0% 100%;
+
     --secondary: 36 10% 92%;
     --secondary-foreground: 40 5% 22%;
+
     --muted: 36 10% 95%;
     --muted-foreground: 36 5% 38%;
+
     --accent: 36 10% 94%;
     --accent-foreground: 40 7% 10%;
+
     --destructive: 0 72% 35%;
     --destructive-foreground: 0 0% 100%;
+
     --border: 36 10% 88%;
     --input: 36 10% 88%;
     --ring: 221 63% 33%;
+
     --radius: 0.8125rem;
+
+    /* POS-specific tokens */
     --pos-nav: 0 0% 100%;
     --pos-nav-foreground: 36 5% 38%;
     --pos-nav-active: 221 63% 33%;
+
     --pos-surface: 0 0% 100%;
     --pos-surface-elevated: 0 0% 100%;
+
     --pos-pay: 145 60% 33%;
     --pos-pay-foreground: 0 0% 100%;
-    --status-green: 145 55% 33%;
-    --status-green-light: 138 76% 94%;
-    --status-amber: 30 80% 32%;
-    --status-amber-light: 48 96% 89%;
-    --status-red: 0 72% 35%;
-    --status-red-light: 0 86% 94%;
-    --status-blue: 221 63% 33%;
-    --status-blue-light: 214 95% 93%;
+
+    --pos-status-available: 145 55% 33%;
+    --pos-status-occupied: 36 92% 45%;
+    --pos-status-reserved: 221 63% 33%;
+    --pos-status-dirty: 0 65% 35%;
+
+    --pos-category-bg: 36 10% 94%;
+    --pos-category-active: 221 63% 33%;
+    --pos-category-active-fg: 0 0% 100%;
+
+    /* Sidebar — light surface style */
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 36 5% 38%;
     --sidebar-primary: 221 63% 33%;
@@ -49,6 +65,27 @@
     --sidebar-accent-foreground: 40 7% 10%;
     --sidebar-border: 36 10% 88%;
     --sidebar-ring: 221 63% 33%;
+
+    /* Extended warm palette */
+    --warm-50: 36 14% 97%;
+    --warm-100: 36 10% 94%;
+    --warm-200: 36 10% 88%;
+    --warm-300: 36 8% 80%;
+    --warm-400: 36 5% 62%;
+    --warm-500: 36 5% 38%;
+    --warm-600: 40 5% 22%;
+    --warm-700: 40 7% 14%;
+    --warm-800: 40 7% 10%;
+
+    /* Status semantic */
+    --status-green: 145 55% 33%;
+    --status-green-light: 138 76% 94%;
+    --status-amber: 30 80% 32%;
+    --status-amber-light: 48 96% 89%;
+    --status-red: 0 72% 35%;
+    --status-red-light: 0 86% 94%;
+    --status-blue: 221 63% 33%;
+    --status-blue-light: 214 95% 93%;
   }
 
   .dark {
@@ -79,6 +116,11 @@
     --sidebar-accent-foreground: 36 10% 85%;
     --sidebar-border: 40 8% 14%;
     --sidebar-ring: 221 63% 42%;
+
+    --pos-nav: 40 12% 7%;
+    --pos-nav-foreground: 36 5% 52%;
+    --pos-nav-active: 221 63% 42%;
+
     --status-green: 142 70% 55%;
     --status-green-light: 145 40% 8%;
     --status-amber: 45 93% 47%;
@@ -93,6 +135,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
@@ -103,7 +146,8 @@
     overflow: hidden;
     touch-action: manipulation;
   }
-  /* Disable zoom */
+
+  /* Disable zoom on tablet */
   html {
     touch-action: manipulation;
     -ms-touch-action: manipulation;
@@ -122,14 +166,65 @@
     background: hsl(var(--border));
     border-radius: 2px;
   }
+
+  /* Uniweb-style KPI stripe */
+  .kpi-stripe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  /* Status badge with dot */
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-xs font-semibold;
+  }
+  .status-dot {
+    @apply w-1.5 h-1.5 rounded-full flex-shrink-0;
+  }
+
+  /* Mono text for IDs, codes */
+  .mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Section heading — uppercase label style */
   .section-label {
     @apply text-xs font-bold uppercase tracking-wider text-muted-foreground;
     letter-spacing: 0.08em;
     font-size: 11px;
   }
-  .mono {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.02em;
+
+  /* Card with 1.5px border */
+  .uniweb-card {
+    @apply bg-card border-[1.5px] border-border rounded-xl;
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  /* Table header style */
+  .table-header th {
+    @apply text-left font-bold uppercase tracking-wider text-muted-foreground border-b border-border whitespace-nowrap;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 10px 14px;
+  }
+
+  .table-row td {
+    padding: 11px 14px;
+    font-size: 13px;
+    vertical-align: middle;
+  }
+
+  /* Page animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .page-enter {
+    animation: fadeUp 0.28s ease;
   }
 }

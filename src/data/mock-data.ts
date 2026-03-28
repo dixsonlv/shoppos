@@ -16,7 +16,7 @@ export interface Table {
   openAmount?: number;
   elapsedMinutes?: number;
   orderId?: string;
-  mergedWith?: string[];
+  mergedWith?: string[]; // IDs of tables merged with this one
 }
 
 export interface MenuItem {
@@ -33,7 +33,7 @@ export interface MenuItem {
   isCombo?: boolean;
   isFlexCombo?: boolean;
   comboGroups?: ComboGroup[];
-  comboIncludes?: string[];
+  comboIncludes?: string[]; // display names for fixed combos
 }
 
 export interface ComboGroup {
@@ -166,6 +166,7 @@ import friedMantouImg from "@/assets/food/fried-mantou.jpg";
 import mangoSagoImg from "@/assets/food/mango-sago.jpg";
 import nasiBriyaniImg from "@/assets/food/nasi-briyani.jpg";
 import lorMeeImg from "@/assets/food/lor-mee.jpg";
+// New unique images
 import cerealPrawnImg from "@/assets/food/cereal-prawn.jpg";
 import sambalStingrayImg from "@/assets/food/sambal-stingray.jpg";
 import saltedEggFishSkinImg from "@/assets/food/salted-egg-fish-skin.jpg";
