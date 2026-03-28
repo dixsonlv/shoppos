@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Plus, Search, MoreHorizontal, Zap, Tag, Gift, Users, Calendar, ToggleLeft, ToggleRight, ChevronRight, ArrowLeft, Trash2, Copy } from "lucide-react";
+import { ArrowLeft, Calendar, ChevronRight, Copy, Gift, Plus, Search, Tag, ToggleLeft, ToggleRight, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -76,7 +76,7 @@ const typeConfig: Record<PromoType, { icon: React.ReactNode; label: string; colo
   discount: { icon: <Tag className="h-4 w-4" />, label: "Discount", color: "text-primary bg-primary/10" },
   bogo: { icon: <Gift className="h-4 w-4" />, label: "BOGO", color: "text-status-amber bg-status-amber-light" },
   gift: { icon: <Gift className="h-4 w-4" />, label: "Free Item", color: "text-status-green bg-status-green-light" },
-  coupon: { icon: <Tag className="h-4 w-4" />, label: "Coupon", color: "text-[hsl(280,60%,50%)] bg-[hsl(280,60%,95%)]" },
+  coupon: { icon: <Tag className="h-4 w-4" />, label: "Coupon", color: "text-primary bg-status-blue-light" },
   loyalty: { icon: <Users className="h-4 w-4" />, label: "Loyalty", color: "text-status-amber bg-status-amber-light" },
   happy_hour: { icon: <Zap className="h-4 w-4" />, label: "Happy Hour", color: "text-primary bg-primary/10" },
 };
@@ -122,12 +122,12 @@ const AdminPromotions: React.FC = () => {
   if (selected) {
     const cfg = typeConfig[selected.type];
     return (
-      <div className="p-8 max-w-3xl">
+      <div className="w-full p-6 lg:p-8">
         <button onClick={() => setSelectedId(null)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground text-[13px] mb-6 transition-colors">
           <ArrowLeft className="h-4 w-4" /> Back to Promotions
         </button>
 
-        <div className="flex items-start justify-between mb-8">
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-3 mb-2">
               <span className={cn("p-2 rounded-lg", cfg.color)}>{cfg.icon}</span>
@@ -155,7 +155,7 @@ const AdminPromotions: React.FC = () => {
         </div>
 
         {/* Stats cards */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           <div className="bg-card border border-border rounded-xl p-4">
             <div className="text-[11px] text-muted-foreground font-medium mb-1">Total Usage</div>
             <div className="text-2xl font-bold text-foreground">{selected.usageCount}</div>
@@ -173,11 +173,11 @@ const AdminPromotions: React.FC = () => {
         </div>
 
         {/* Configuration details */}
-        <div className="space-y-6">
+        <div className="space-y-6 max-w-6xl">
           {/* Trigger */}
           <div className="bg-card border border-border rounded-xl p-5">
             <h3 className="text-[13px] font-bold text-foreground mb-4">Trigger Conditions</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid gap-4 md:grid-cols-2">
               {selected.minSpend !== undefined && (
                 <div>
                   <div className="text-[11px] text-muted-foreground mb-1">Min. Spend</div>
@@ -232,7 +232,7 @@ const AdminPromotions: React.FC = () => {
           {/* Stacking */}
           <div className="bg-card border border-border rounded-xl p-5">
             <h3 className="text-[13px] font-bold text-foreground mb-4">Stacking Rules</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid gap-4 md:grid-cols-2">
               <div>
                 <div className="text-[11px] text-muted-foreground mb-1">Combinable</div>
                 <div className="text-[14px] font-semibold text-foreground">{selected.combinable ? "Yes" : "No (Exclusive)"}</div>
@@ -250,9 +250,9 @@ const AdminPromotions: React.FC = () => {
 
   // --- List View ---
   return (
-    <div className="p-8 max-w-5xl">
+    <div className="w-full p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-foreground">Promotions</h1>
           <p className="text-[13px] text-muted-foreground mt-1">Manage discounts, promo codes, and marketing campaigns</p>
@@ -263,7 +263,7 @@ const AdminPromotions: React.FC = () => {
       </div>
 
       {/* KPI cards */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="mb-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <div className="bg-card border border-border rounded-xl p-4">
           <div className="text-[11px] text-muted-foreground font-medium mb-1">Active Promotions</div>
           <div className="text-2xl font-bold text-foreground">{totalActive}</div>
@@ -281,7 +281,7 @@ const AdminPromotions: React.FC = () => {
       {/* Quick templates */}
       <div className="mb-6">
         <div className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-3">Quick Create</div>
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {templates.map(tpl => (
             <button key={tpl.name} className="bg-card border border-border rounded-xl p-4 text-left hover:border-primary/40 hover:shadow-sm transition-all active:scale-[0.98] group">
               <div className={cn("p-2 rounded-lg w-fit mb-2", typeConfig[tpl.type].color)}>{tpl.icon}</div>
@@ -293,8 +293,8 @@ const AdminPromotions: React.FC = () => {
       </div>
 
       {/* Filters */}
-      <div className="flex items-center gap-3 mb-4">
-        <div className="relative flex-1 max-w-xs">
+      <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center">
+        <div className="relative w-full lg:max-w-xs">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
           <input
             value={search}
@@ -303,7 +303,8 @@ const AdminPromotions: React.FC = () => {
             className="w-full h-10 pl-9 pr-3 rounded-xl bg-background border border-border text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-all"
           />
         </div>
-        <div className="flex gap-1.5">
+        <div className="overflow-x-auto pos-scrollbar">
+          <div className="flex min-w-max gap-1.5">
           {(["all", "active", "scheduled", "expired", "draft"] as const).map(s => (
             <button
               key={s}
@@ -316,12 +317,14 @@ const AdminPromotions: React.FC = () => {
               {s.charAt(0).toUpperCase() + s.slice(1)}
             </button>
           ))}
+          </div>
         </div>
       </div>
 
       {/* Table */}
-      <div className="bg-card border border-border rounded-xl overflow-hidden">
-        <table className="w-full">
+      <div className="overflow-hidden rounded-xl border border-border bg-card">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[760px]">
           <thead>
             <tr className="border-b border-border bg-accent/30">
               <th className="text-left text-[11px] font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Promotion</th>
@@ -375,9 +378,10 @@ const AdminPromotions: React.FC = () => {
               );
             })}
           </tbody>
-        </table>
+          </table>
+        </div>
         {filtered.length === 0 && (
-          <div className="text-center py-12 text-muted-foreground text-[13px]">No promotions found</div>
+          <div className="py-12 text-center text-[13px] text-muted-foreground">No promotions found</div>
         )}
       </div>
     </div>
